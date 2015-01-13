@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar-header{
+  background: none !important;
+}
+
+#logo-header{
+  width: auto;
+  height: 58px;
+}

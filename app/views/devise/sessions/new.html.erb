@@ -1,15 +1,99 @@
-<h2>Log in</h2>
+    <!--
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+    |=========================================================================================================================|
+  |  TABLE OF CONTENTS (Use search to find needed section)                                                                  |
+  |=========================================================================================================================|
+    |  01. @HEAD                        |  Container for all the head elements                                                |
+  |  02. @META SECTION                |  The meta tag provides metadata about the HTML document                             |
+  |  03. @FAVICONS                    |  Short for favorite icon, shortcut icon, website icon, tab icon or bookmark icon    |
+  |  04. @FONT STYLES                 |  Font from google fonts                                                             |
+  |  05. @GLOBAL MANDATORY STYLES     |  The main 3rd party plugins css file                                                |
+  |  06. @PAGE LEVEL STYLES           |  Specific 3rd party plugins css file                                                |
+  |  07. @THEME STYLES                |  The main theme css file                                                            |
+  |  08. @IE SUPPORT                  |  IE support of HTML5 elements and media queries                                     |
+  |=========================================================================================================================|
+  |  09. @BODY                        |  Contains all the contents of an HTML document                                      |
+  |  10. @LOADING ANIMATION           |  Loading animation when the page reload                                             |
+  |  11. @WRAPPER                     |  Wrapping page section                                                              |
+  |  12. @SIGN WRAPPER                |  Wrapping sign design                                                               |
+  |=========================================================================================================================|
+  |  13. @CORE PLUGINS                |  The main 3rd party plugins script file                                             |
+  |  14. @PAGE LEVEL SCRIPTS          |  The main theme script file                                                         |
+  |=========================================================================================================================|
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+    START @BODY
+    |=========================================================================================================================|
+  |  TABLE OF CONTENTS (Apply to body class)                                                                                |
+  |=========================================================================================================================|
+    |  01. page-boxed                   |  Page into the box is not full width screen                                         |
+  |  02. page-sound                   |  For playing sounds on user actions and page events                                 |
+  |=========================================================================================================================|
 
-<%= render "devise/shared/links" %>
+  -->
+    <body class="page-sound bg-light">
+
+        <!-- START @WRAPPER-->
+        <div id="wrapper">
+            <!-- START @SIGN WRAPPER -->
+            <div class="sign-wrapper">
+
+                <!-- Brand -->
+                <div class="brand animated fadeInDown">
+                    <img src="/assets/logo-ma-boutique.png" alt="brand logo"/>
+                </div>
+                <!--/ Brand -->
+
+                <!-- Login form -->
+                <%= form_tag("/login", {id: "/login", class: "form-horizontal animated zoomIn shadow rounded"}) do |f| %>
+                    <div class="sign-header">
+                        <div class="form-group">
+                            <div class="sign-text">
+                                <span>Connexion</span>
+                            </div>
+                        </div><!-- /.form-group -->
+                    </div><!-- /.sign-header -->
+                    <div class="sign-body">
+                        <div class="form-group">
+                            <div class="input-group input-group-lg rounded">
+                                <input type="text" class="form-control input-sm" placeholder="Email " name="user[email]">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            </div>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="input-group input-group-lg rounded">
+                                <input type="password" class="form-control input-sm" placeholder="Mot de passe" name="user[password]">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            </div>
+                        </div><!-- /.form-group -->
+                    </div><!-- /.sign-body -->
+                    <div class="sign-footer">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="ckbox ckbox-theme">
+                                        <input id="rememberme" type="checkbox" name="user[remember_me]">
+                                        <label for="rememberme" class="rounded">Se souvenir de moi</label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <a href="/users/password/new" title="lost password">Mot de passe oublié ?</a>
+                                </div>
+                            </div>
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-theme btn-lg btn-block no-margin rounded" id="login-btn">Connexion</button>
+                        </div><!-- /.form-group -->
+                    </div><!-- /.sign-footer -->
+                <% end %>
+                <!--/ Login form -->
+
+                <!-- Content text -->
+                <br/>
+                <p class="text-muted text-center animated fadeinup">Vous n'avez pas encore de compte ? <a href="/signup">S'inscrire</a></p>
+                <!--/ Content text -->
+
+            </div><!-- /#sign-wrapper -->
+            <!--/ END SIGN WRAPPER -->
+        </div><!-- /#wrapper -->
+    </body>
+    <!-- END BODY -->

@@ -2,13 +2,39 @@
 <html>
 <head>
   <title>Maboutique</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+  <!-- ----------------------------     CSS import theme      ---------------------------- -->
+
+  <!-- START @FONT STYLES -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet">
+  <!--/ END FONT STYLES -->
+
+  <!-- START @THEME STYLES -->
+  <link href="/css/layout.css" rel="stylesheet">
+  <link href="/css/themes/default.theme.css" rel="stylesheet" id="theme">
+  <link href="/css/pages/sign.css" rel="stylesheet">
+  <!--/ END THEME STYLES -->
+
+  <!-- ----------------------------     END CSS import theme  ---------------------------- -->
+
+  <!-- ----------------------------     JS import theme       ---------------------------- -->
+
+  <!-- ----------------------------     END JS import theme   ---------------------------- -->
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
 <%= yield %>
-
 </body>
+
 </html>
