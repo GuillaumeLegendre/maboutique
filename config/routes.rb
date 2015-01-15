@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'home/index'
   get 'home/tarifs'
+  get 'home/cgv'
+  get 'home/contact'
+  get 'home/faq'
   get 'contact/send_email'
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]

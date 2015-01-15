@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 20150109123001) do
 
   create_table "contacts", force: true do |t|
     t.string   "email"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.date     "birthday"
+    t.string   "phone"
+    t.boolean  "vip"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
