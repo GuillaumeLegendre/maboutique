@@ -61,10 +61,10 @@ p {
 }
 @media (min-width: 1440px) {
   body {
-    background-color: #e6e6e6;
+    background-color: #FFFFFF;
   }
   #wrapper {
-    width: 1366px;
+    width: 100%;
     margin: 0px auto;
   }
   #top-reasons,

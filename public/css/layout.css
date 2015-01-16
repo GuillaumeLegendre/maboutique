@@ -31,7 +31,7 @@
    04. SIDEBAR CATEGORY
    05. SIDEBAR FOOTER
    06. SIDEBAR LEFT
-   
+
  * ========================================================================
  * LAYOUT SIDEBAR RIGHT
  * ========================================================================
@@ -1790,7 +1790,7 @@ body.page-footer-fixed #page-content .footer-content {
  * BODY CONTENT
  * ======================================================================== */
 .body-content {
-  background-color: #e9eaed;
+  background-color: #FFFFFF;
   padding: 20px 20px 0px 20px;
   min-height: 1100px;
   position: relative;
