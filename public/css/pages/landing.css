@@ -39,7 +39,7 @@ body {
 }
 h2 {
   color: #333;
-  font-size: 30px;
+  font-size: 35px;
   line-height: 36px;
   font-weight: 400;
 }
@@ -186,7 +186,7 @@ p {
 #banner.banner-view .inner h1 {
   margin-bottom: 30px;
   -webkit-font-smoothing: antialiased;
-  font-size: 35px;
+  font-size: 50px;
   line-height: 46px;
   opacity: .9;
   text-align: center;
@@ -214,6 +214,9 @@ p {
   right: 0;
   left: 0;
   bottom: 0;
+}
+#banner.banner-view .inner h3 {
+  font-size: 30px;
 }
 /* ========================================================================
  * LAYOUT / BANNER / LIVE PREVIEW
@@ -298,7 +301,6 @@ p {
   overflow: hidden;
 }
 .feature .inner {
-  height: 560px;
   padding-top: 70px;
 }
 .feature h2 {
