@@ -1,7 +1,6 @@
 class ContactController < ApplicationController
   before_filter :authenticate_user!
-  def new
-  end
+  layout "backoffice"
 
   def create
     params[:contact][:user_id] = current_user.id
