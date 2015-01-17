@@ -145,28 +145,7 @@
       <span class="pull-right"><i class="fa fa-rocket"></i></span>
     </li>
 
-    <li class="sidebar-category" style="margin-top:75px;">
-      <span>Informations</span>
-    </li>
 
-    <li class="sidebar-minimize">
-      <a>
-        <span class="icon"><i class="fa fa-group"></i></span>
-        <span class="text"><%= current_user.contacts.length %> Contacts</span>
-      </a>
-    </li>
-    <li class="sidebar-minimize">
-      <a>
-        <span class="icon"><i class="fa fa-mobile"></i></span>
-        <span class="text"><%= Contact.where(user_id: current_user).where.not('phone' => '').length %> CONTACT TEL</span>
-      </a>
-    </li>
-    <li class="sidebar-minimize-end">
-      <a>
-        <span class="icon"><i class="fa fa-money"></i></span>
-        <span class="text">452 CREDITS SMS</span>
-      </a>
-    </li>
 
     <!-- <li>
     <a href="#">
@@ -182,13 +161,13 @@
 <li class="sidebar-minimize">
   <a>
     <span class="icon"><i class="fa fa-group"></i></span>
-    <span class="text">452 Contacts</span>
+    <span class="text"><%= current_user.contacts.length %> Contacts</span>
   </a>
 </li>
 <li class="sidebar-minimize">
   <a>
     <span class="icon"><i class="fa fa-mobile"></i></span>
-    <span class="text">452 CONTACT TEL</span>
+    <span class="text"><%= Contact.where(user_id: current_user).where.not('phone' => '').length %> CONTACT TEL</span>
   </a>
 </li>
 <li class="sidebar-minimize-end">
