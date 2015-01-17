@@ -4,8 +4,9 @@ class ContactController < ApplicationController
 
   def create
     params[:contact][:user_id] = current_user.id
-    if params[:contact][:birthday]
-      params[:contact][:birthday] = Date.parse(params[:contact][:birthday])
+    if params[:contact][:day] && params[:contact][:month] && params[:contact][:year]
+      puts params[:contact][:day] + params[:contact][:month] + params[:contact][:year].inspect
+      params[:contact][:birthday] = Date.parse(params[:contact][:day] + "-" + params[:contact][:month] + "-" + params[:contact][:year] )
     end
     c = Contact.create(contact_params)
     redirect_to new_contact_path, {notice: "Votre contact à bien été enregistré"}
