@@ -10,6 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def edit
-    super
+    render :edit, layout: "backoffice"
   end
 end
