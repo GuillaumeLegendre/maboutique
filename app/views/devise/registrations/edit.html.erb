@@ -1,27 +1,337 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+<link href="/css/components.css" rel="stylesheet">
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+
+<body class="page-sound" style="display: block;">
+
+  <!-- START @WRAPPER -->
+  <section id="wrapper" style="opacity: 1;">
+
+    <!-- START @HEADER -->
+    <header id="header">
+
+      <!-- Start header left -->
+      <div class="header-left">
+        <!-- Start offcanvas left: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
+        <div class="navbar-minimize-mobile left">
+          <i class="fa fa-bars"></i>
+        </div>
+        <!--/ End offcanvas left -->
+
+        <!-- Start navbar header -->
+        <div class="navbar-header">
+
+          <!-- Start brand -->
+          <a class="navbar-brand" href="/dashboard">
+            <img src="/assets/logo-ma-boutique.png" alt="brand logo" id="logo-header"/>
+          </a><!-- /.navbar-brand -->
+          <!--/ End brand -->
+
+        </div><!-- /.navbar-header -->
+        <!--/ End navbar header -->
+
+        <!-- Start offcanvas right: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
+        <div class="navbar-minimize-mobile right">
+          <i class="fa fa-cog"></i>
+        </div>
+        <!--/ End offcanvas right -->
+
+        <div class="clearfix"></div>
+      </div><!-- /.header-left -->
+      <!--/ End header left -->
+
+      <!-- Start header right -->
+      <div class="header-right">
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+        <% end %>
+        <!-- Start navbar toolbar -->
+        <!-- /.navbar-toolbar -->
+        <!--/ End navbar toolbar -->
+      </div><!-- /.header-right -->
+      <!--/ End header left -->
+
+    </header> <!-- /#header -->
+    <!--/ END HEADER -->
+
+    <aside id="sidebar-left" class="sidebar-circle">
+
+      <!-- Start left navigation - profile shortcut -->
+      <div class="sidebar-content">
+
+        <div class="media">
+          <a class="pull-left has-notif avatar" href="/account">
+            <img src="/assets/avatar.png" alt="admin">
+            <i class="online"></i>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Bonjour,</h4>
+            <small>&nbsp;</small>
+          </div>
+        </div>
+      </div><!-- /.sidebar-content -->
+      <!--/ End left navigation -  profile shortcut -->
+
+      <!-- Start left navigation - menu -->
+      <ul class="sidebar-menu">
+        <!-- Start navigation - frontend themes -->
+        <li>
+          <a href=<%= dashboard_path %>>
+            <span class="icon"><i class="fa fa-leaf"></i></span>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <!--/ End navigation - frontend themes -->
+
+        <!-- Start navigation - frontend themes -->
+        <li>
+          <a href=<%= new_contact_path %>>
+            <span class="icon"><i class="fa fa-leaf"></i></span>
+            <span class="text">Ajouter un contact</span>
+          </a>
+        </li>
+        <!--/ End navigation - frontend themes -->
+
+        <!-- Start navigation - dashboard -->
+        <li class="sidebar-category">
+          <span>Envoyer des emails</span>
+          <span class="pull-right"><i class="fa fa-rocket"></i></span>
+        </li>
+
+        <!-- <li>
+        <a href="/contact/send_email">
+        <span class="icon"><i class="fa fa-home"></i></span>
+        <span class="text">Envoyer des emails</span>
+      </a>
+    </li> -->
+    <!--/ End navigation - dashboard -->
+
+    <!-- Start navigation - landing -->
+    <li class="sidebar-category">
+      <span>Envoyer des sms</span>
+      <span class="pull-right"><i class="fa fa-rocket"></i></span>
+    </li>
+
+    <!-- <li>
+    <a href="#">
+    <span class="icon"><i class="fa fa-rocket"></i></span>
+    <span class="text">Envoyer des sms</span>
+  </a>
+</li> -->
+<!--/ End navigation - landing -->
+<li class="sidebar-category" style="margin-top:75px;">
+  <span>Informations</span>
+</li>
+
+<li class="sidebar-minimize">
+  <a>
+    <span class="icon"><i class="fa fa-group"></i></span>
+    <span class="text">452 Contacts</span>
+  </a>
+</li>
+<li class="sidebar-minimize">
+  <a>
+    <span class="icon"><i class="fa fa-mobile"></i></span>
+    <span class="text">452 CONTACT TEL</span>
+  </a>
+</li>
+<li class="sidebar-minimize-end">
+  <a>
+    <span class="icon"><i class="fa fa-money"></i></span>
+    <span class="text">452 CREDITS SMS</span>
+  </a>
+</li>
+
+</ul><!-- /.sidebar-menu -->
+<!--/ End left navigation - menu -->
+
+<!-- Start left navigation - footer -->
+<!-- /.sidebar-footer -->
+<!--/ End left navigation - footer -->
+
+</aside><!-- /#sidebar-left -->
+<!--/ END SIDEBAR LEFT -->
+
+<!-- START @PAGE CONTENT -->
+<section id="page-content">
+
+  <!-- Start page header -->
+  <!-- /.header-content -->
+  <!--/ End page header -->
+
+  <!-- Start body content -->
+  <div class="body-content animated fadeIn">
+
+    <div class="row">
+
+      <div class="col-md-12 text-center">
+
+        <h1>MODIFIER MON PROFIL</h1></br>
+
+      </div>
+
+
+    </div>
+
+    <div class="row">
+
+
+
+
+    </div>
+
+
+
+    <div class="row">
+
+
+    <div class="panel rounded shadow">
+      <div class="panel-heading">
+        <div class="clearfix"></div>
+      </div><!-- /.panel-heading -->
+      <div class="panel-sub-heading">
+        <div class="callout callout-info"><p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p></div>
+      </div><!-- /.panel-subheading -->
+      <div class="panel-body no-padding rounded-bottom">
+        <form action="#" class="form-horizontal form-bordered">
+          <div class="form-body">
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Default Input</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text">
+              </div>
+            </div><!-- /.form-group -->
+
+
+
+
+            <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :email, required: true, autofocus: true  %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :password_confirmation, required: false %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+                </div>
+              </div>
+            </div>
+
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+
+
+
+
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Update" %>
+            </div>
+            <% end %>
+
+            <h3>Cancel my account</h3>
+
+            <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+            <%= link_to "Back", :back %>
+
+
+
+
+
+
+          </div><!-- /.form-body -->
+
+          <div class="form-footer">
+            <div class="pull-right">
+              <button class="btn btn-danger mr-5">Cancel</button>
+              <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+            <div class="clearfix"></div>
+          </div><!-- /.form-footer -->
+        </form>
+      </div><!-- /.panel-body -->
+    </div>
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+
+
+
+  </div><!-- /.body-content -->
+  <!--/ End body content -->
+
+</section><!-- /#page-content -->
+<!--/ END PAGE CONTENT -->
+
+<!-- START @SIDEBAR RIGHT -->
+<aside id="sidebar-right">
+
+  <div class="panel panel-tab">
+    <div class="panel-heading no-padding">
+      <div class="pull-right">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#sidebar-profile" data-toggle="tab">
+              <i class="fa fa-user"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#sidebar-layout" data-toggle="tab">
+              <i class="fa fa-cogs"></i>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#sidebar-setting" data-toggle="tab">
+              <i class="fa fa-paint-brush"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#sidebar-chat" data-toggle="tab">
+              <i class="fa fa-comments"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
   </div>
-<% end %>
 
-<h3>Cancel my account</h3>
+</aside><!-- /#sidebar-right -->
+<!--/ END SIDEBAR RIGHT -->
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</section><!-- /#wrapper -->
 
-<%= link_to "Back", :back %>
+</body>
