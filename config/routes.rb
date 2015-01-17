@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home/cgv'
   get 'home/contact'
   get 'home/faq'
+  get 'home/siteweb'
   get 'contact/send_email'
   get 'dashboard' => "dashboard#show"
 
