@@ -4,12 +4,26 @@ class ContactController < ApplicationController
 
   def create
     params[:contact][:user_id] = current_user.id
-    if params[:contact][:day] && params[:contact][:month] && params[:contact][:year]
-      puts params[:contact][:day] + params[:contact][:month] + params[:contact][:year].inspect
+    unless params[:contact][:day].empty? && params[:contact][:month].empty? && params[:contact][:year].empty?
       params[:contact][:birthday] = Date.parse(params[:contact][:day] + "-" + params[:contact][:month] + "-" + params[:contact][:year] )
     end
-    c = Contact.create(contact_params)
-    redirect_to new_contact_path, {notice: "Votre contact à bien été enregistré"}
+    @c = Contact.create(contact_params)
+    if @c.valid?
+      redirect_to :back, {notice: "Votre contact à bien été enregistré"}
+    else
+      errors = "
+      <div id='error_explanation'>
+      <h2> #{ActionController::Base.helpers.pluralize(3, "erreur")} ont empéché ce contact d'être enregistré :</h2>
+      <ul>"
+        @c.errors.full_messages.each do |msg|
+          errors += "<li>#{msg}</li>"
+        end
+      errors += "
+      </ul>
+      </div>"
+
+      redirect_to :back, notice: errors
+    end
   end
 
   def send_email

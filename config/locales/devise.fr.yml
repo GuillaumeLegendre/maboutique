@@ -59,3 +59,14 @@ fr:
       not_saved:
         one: "1 erreur a empêché ce(tte) %{resource} d'être sauvegardé(e) :"
         other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e) :"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "invalide"
+            password:
+              too_short: ": Le mot de passe est trop court"
+            password_confirmation:
+              confirmation: ": Les mots de passe ne correspondent pas"
