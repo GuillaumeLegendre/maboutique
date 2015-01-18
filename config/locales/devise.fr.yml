@@ -66,6 +66,7 @@ fr:
           attributes:
             email:
               invalid: "invalide"
+              blank: "Votre email ne peut pas être vide"
             password:
               too_short: ": Le mot de passe est trop court"
             password_confirmation:

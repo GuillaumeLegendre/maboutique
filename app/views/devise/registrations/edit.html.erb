@@ -69,14 +69,6 @@
             <div class="form-group">
               <div class="form-inputs">
                 <div class="col-sm-9">
-                  <%= f.input :current_password, hint: "Veuillez entrer votre mot de passe pour valider les modifications.", required: true, label: "Mot de passe actuel" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="form-inputs">
-                <div class="col-sm-9">
                   <%= f.input :last_name, required: false, label: "Nom" %>
                 </div>
               </div>
@@ -117,7 +109,8 @@
             <div class="form-group">
               <div class="form-inputs">
                 <div class="col-sm-9">
-                  <%= f.input :zip_code, required: false, label: "Code postal" %>
+                  <%= label_tag(:user_zip_code, "Code postal") %>
+                  <%= f.number_field :zip_code, in: 1..999999, step:1 ,required: false, label: "Code postal" %>
                 </div>
               </div>
             </div>
@@ -129,7 +122,6 @@
                 </div>
               </div>
             </div>
-
 
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                 <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

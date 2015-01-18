@@ -9,7 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name_pro
       t.string :phone
       t.string :address
-      t.string :zip_code
+      t.integer :zip_code
       t.string :town
       t.integer :credits, null: false, default: 100
 
