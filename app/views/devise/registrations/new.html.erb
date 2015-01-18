@@ -1,3 +1,8 @@
+<% unless devise_error_messages!.empty? %>
+  <div class="alert alert-warning">
+    <%= devise_error_messages! %>
+  </div>
+<% end %>
 <body class="page-sound bg-light">
 
     <!-- START @WRAPPER -->
