@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20150109123001) do
   enable_extension "plpgsql"
 
   create_table "contacts", force: true do |t|
-    t.string   "email"
+    t.string   "email",                      null: false
     t.string   "last_name"
     t.string   "first_name"
     t.date     "birthday"
     t.string   "phone"
-    t.boolean  "vip"
+    t.boolean  "vip",        default: false, null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,7 +31,13 @@ ActiveRecord::Schema.define(version: 20150109123001) do
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",  null: false
     t.string   "encrypted_password",     default: "",  null: false
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "name_pro"
     t.string   "phone"
+    t.string   "address"
+    t.string   "zip_code"
+    t.string   "town"
     t.integer  "credits",                default: 100, null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

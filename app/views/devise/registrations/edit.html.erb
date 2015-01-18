@@ -35,27 +35,13 @@
       <div class="panel-heading">
         <div class="clearfix"></div>
       </div><!-- /.panel-heading -->
-      <div class="panel-sub-heading">
-        <div class="callout callout-info"><p>Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding <code>.form-horizontal</code> to the form. Doing so changes <code>.form-group</code>s to behave as grid rows, so no need for <code>.row</code>.</p></div>
-      </div><!-- /.panel-subheading -->
       <div class="panel-body no-padding rounded-bottom">
-        <form action="#" class="form-horizontal form-bordered">
+
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-horizontal form-bordered" }) do |f| %>
           <div class="form-body">
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Default Input</label>
-              <div class="col-sm-9">
-                <input class="form-control" type="text">
-              </div>
-            </div><!-- /.form-group -->
-
-
-
-
-            <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <h2>Modifier votre profil</h2>
             <%= f.error_notification %>
+
             <div class="form-group">
               <div class="form-inputs">
                 <div class="col-sm-9">
@@ -67,7 +53,7 @@
             <div class="form-group">
               <div class="form-inputs">
                 <div class="col-sm-9">
-                  <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+                  <%= f.input :password, autocomplete: "off", hint: "Ne pas remplir si vous ne souhaitez pas le changer.", required: false, label: "Nouveau mot de passe" %>
                 </div>
               </div>
             </div>
@@ -75,7 +61,7 @@
             <div class="form-group">
               <div class="form-inputs">
                 <div class="col-sm-9">
-                  <%= f.input :password_confirmation, required: false %>
+                  <%= f.input :password_confirmation, required: false, label: "Confirmation du mot de passe" %>
                 </div>
               </div>
             </div>
@@ -83,7 +69,63 @@
             <div class="form-group">
               <div class="form-inputs">
                 <div class="col-sm-9">
-                  <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+                  <%= f.input :current_password, hint: "Veuillez entrer votre mot de passe pour valider les modifications.", required: true, label: "Mot de passe actuel" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :last_name, required: false, label: "Nom" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :first_name, required: false, label: "Prénom" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :name_pro, required: false, label: "Nom commercial/Enseigne" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :phone, required: false, label: "Téléphone" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :address, required: false, label: "Adresse" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :zip_code, required: false, label: "Code postal" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-inputs">
+                <div class="col-sm-9">
+                  <%= f.input :town, required: false, label: "Ville" %>
                 </div>
               </div>
             </div>
@@ -93,38 +135,26 @@
                 <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                 <% end %>
 
-
-
-
               </div>
             </div>
 
-            <div class="form-actions">
-              <%= f.button :submit, "Update" %>
-            </div>
-            <% end %>
+            <div class="form-footer">
+              <div class="pull-right">
+                <div class="form-actions">
+                  <%= link_to "Retour", :back, class: "btn btn-default" %>
+                  <%= f.button :submit, "Mettre à jour", {class: "btn btn-success"} %>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div><!-- /.form-footer -->
 
-            <h3>Cancel my account</h3>
-
-            <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-            <%= link_to "Back", :back %>
-
-
-
-
-
-
+          <% end %>
           </div><!-- /.form-body -->
 
-          <div class="form-footer">
-            <div class="pull-right">
-              <button class="btn btn-danger mr-5">Cancel</button>
-              <button class="btn btn-success" type="submit">Submit</button>
-            </div>
-            <div class="clearfix"></div>
-          </div><!-- /.form-footer -->
-        </form>
+        <h3>Supprimer mon compte</h3>
+
+        <p>Vous souhaitez vous désinscrire ? <%= link_to "Supprimer mon compte !", registration_path(resource_name), data: { confirm: "Attention la suppression de votre compte est permanente vous perdrez définitivement tous vos contacts et tous vos crédits ! Voulez vous continuer?" }, method: :delete %></p>
+
       </div><!-- /.panel-body -->
     </div>
 
