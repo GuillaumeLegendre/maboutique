@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20150109123001) do
     t.string   "name_pro"
     t.string   "phone"
     t.string   "address"
-    t.string   "zip_code"
+    t.integer  "zip_code"
     t.string   "town"
     t.integer  "credits",                default: 100, null: false
     t.string   "reset_password_token"
