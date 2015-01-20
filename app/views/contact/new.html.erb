@@ -58,13 +58,13 @@
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label">Date de naissance</label>
                                                 <div class="col-sm-2">
-                                                    <input type="number"  min="1" max="31" class="form-control input-sm" name="contact[day]" placeholder="01" >
+                                                    <input type="number" maxlength="2" min="1" max="31" class="form-control input-sm" name="contact[day]" placeholder="jj" >
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <input type="number"  min="1" max="12" class="form-control input-sm" name="contact[month]" placeholder="01" >
+                                                    <input type="number" maxlength="2" min="1" max="12" class="form-control input-sm" name="contact[month]" placeholder="mm" >
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <input type="number" maxlength="4" min="1900" max="<%= Time.now.year  %>" class="form-control input-sm" name="contact[year]" placeholder="1990" >
+                                                    <input type="number" maxlength="4" min="1900" max="<%= Time.now.year  %>" class="form-control input-sm" name="contact[year]" placeholder="aaaa" >
                                                 </div>
                                             </div><!-- /.form-group -->
                                             <div class="form-group">

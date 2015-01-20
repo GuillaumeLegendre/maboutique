@@ -15,3 +15,71 @@
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+
+// ###############   HIDE ELEMENT   ###############
+//Layouts and indexes
+#header #dashboard,
+#header #comments,
+#header #contacts,
+#header #admin_users,
+#footer,
+.download_links,
+.col-id,
+.col-encrypted_password,
+.col-reset_password_token,
+.col-reset_password_sent_at,
+.col-remember_created_at,
+.col-current_sign_in_at,
+.col-last_sign_in_at,
+.col-current_sign_in_ip,
+.col-last_sign_in_ip,
+.col-created_at,
+.col-updated_at,
+.comments
+{display:none;}
+
+//WARNING work on all page
+#filters_sidebar_section{
+  #new_q > div:nth-child(2),
+  #new_q > div:nth-child(4),
+  #new_q > div:nth-child(13),
+  #new_q > div:nth-child(14),
+  #new_q > div:nth-child(15),
+  #new_q > div:nth-child(16),
+  #new_q > div:nth-child(17),
+  #new_q > div:nth-child(18),
+  #new_q > div:nth-child(19)
+  {display:none;}
+}
+
+// edit user
+#user_encrypted_password_input,
+#user_reset_password_token_input,
+#user_reset_password_sent_at_input,
+#user_remember_created_at_input,
+#user_current_sign_in_at_input,
+#user_last_sign_in_at_input,
+#user_current_sign_in_ip_input,
+#user_last_sign_in_ip_input
+{display:none;}
+
+// show user
+
+body.admin_users{
+  .row-id,
+  .row-encrypted_password,
+  .row-reset_password_token,
+  .row-reset_password_sent_at,
+  .row-remember_created_at,
+  .row-sign_in_count,
+  .row-current_sign_in_at,
+  .row-last_sign_in_at,
+  .row-current_sign_in_ip,
+  .row-last_sign_in_ip,
+  .row-created_at,
+  .row-updated_at
+  {display:none;}
+}
+
+// ###############   END HIDE ELEMENT   ###############

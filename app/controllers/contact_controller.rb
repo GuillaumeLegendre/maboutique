@@ -5,7 +5,7 @@ class ContactController < ApplicationController
   def create
     params[:contact][:user_id] = current_user.id
     unless params[:contact][:day].empty? && params[:contact][:month].empty? && params[:contact][:year].empty?
-      params[:contact][:birthday] = Date.parse(params[:contact][:day] + "-" + params[:contact][:month] + "-" + params[:contact][:year] )
+      params[:contact][:birthday] = Date.parse( "%02d-%02d-#{params[:contact][:year]}" % [params[:contact][:day], params[:contact][:month]] )
     end
     @c = Contact.create(contact_params)
     if @c.valid?

@@ -79,4 +79,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  #GRAILOG
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Graylog2.new
+  config.logger = GELF::Logger.new("208.ip-92-222-15.eu", 12201, "WAN", { :host => "maboutique.pro", :facility => "heroku" })
 end
