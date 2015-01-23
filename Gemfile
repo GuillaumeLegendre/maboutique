@@ -49,6 +49,10 @@ gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
 gem 'activeadmin', github: 'activeadmin'
 
+group :development do
+  gem 'pry'
+end
+
 group :production do
   gem "gelf"
   gem "lograge"
