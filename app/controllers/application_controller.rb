@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
         fallback_redirect = "/"
       end
 
-      redirect_to fallback_redirect, flash: {error: "You must be signed in to view this page."}
+      redirect_to fallback_redirect, flash: {error: "Vous devez être connecté pour pouvoir voir cette page."}
     end
   end
 
