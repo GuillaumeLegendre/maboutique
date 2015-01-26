@@ -26,7 +26,13 @@ class ContactController < ApplicationController
     end
   end
 
+  def new_email
+  end
+
   def send_email
+    @contacts = Contact.where(user_id: current_user, vip: params[:email][:vip])
+    @contacts = @contacts.where(gender: Contact.genders[params[:email][:gender]]) if params[:email][:gender].present?
+    redirect_to :back
   end
 
   private

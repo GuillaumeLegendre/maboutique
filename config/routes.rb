@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'home/contact'
   get 'home/faq'
   get 'home/siteweb'
-  get 'contact/send_email'
+  get 'contact/new_email'
+  post 'contact/send_email'
   get 'dashboard' => "dashboard#show"
 
 

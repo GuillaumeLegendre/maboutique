@@ -75,11 +75,8 @@
       <!-- Start header right -->
       <div class="header-right">
         <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg.html_safe, class: "alert alert-info" %>
+        <%= content_tag :div, msg.html_safe, class: "alert alert-info" %>
         <% end %>
-        <!-- Start navbar toolbar -->
-        <!-- /.navbar-toolbar -->
-        <!--/ End navbar toolbar -->
       </div><!-- /.header-right -->
       <!--/ End header left -->
 
@@ -98,7 +95,7 @@
           </a>
           <div class="media-body">
             <h4 class="media-heading">Bonjour,</h4>
-            <small><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">Se déconnecter</a>
+            <small><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">Se déconnecter</a></small>
           </div>
         </div>
       </div><!-- /.sidebar-content -->
@@ -110,7 +107,7 @@
         <li>
           <a href=<%= dashboard_path %>>
             <span class="icon"><i class="fa fa-leaf"></i></span>
-            <span class="text">Dashboard</span>
+            <span class="text">Tableau de bord</span>
           </a>
         </li>
         <!--/ End navigation - frontend themes -->
@@ -129,104 +126,81 @@
           <span>Envoyer des emails</span>
           <span class="pull-right"><i class="fa fa-rocket"></i></span>
         </li>
+        <!--/ End navigation - dashboard -->
 
-        <!-- <li>
-        <a href="/contact/send_email">
-        <span class="icon"><i class="fa fa-home"></i></span>
-        <span class="text">Envoyer des emails</span>
-      </a>
-    </li> -->
-    <!--/ End navigation - dashboard -->
+        <!-- Start navigation - landing -->
+        <li class="sidebar-category">
+          <span>Envoyer des sms</span>
+          <span class="pull-right"><i class="fa fa-rocket"></i></span>
+        </li>
+        <!--/ End navigation - landing -->
+        <li class="sidebar-category" style="margin-top:75px;">
+          <span>Informations</span>
+        </li>
 
-    <!-- Start navigation - landing -->
-    <li class="sidebar-category">
-      <span>Envoyer des sms</span>
-      <span class="pull-right"><i class="fa fa-rocket"></i></span>
-    </li>
+        <li class="sidebar-minimize">
+          <a>
+            <span class="icon"><i class="fa fa-group"></i></span>
+            <span class="text"><%= current_user.contacts.length %> Contacts Emails</span>
+          </a>
+        </li>
+        <li class="sidebar-minimize">
+          <a>
+            <span class="icon"><i class="fa fa-mobile"></i></span>
+            <span class="text"><%= Contact.where(user_id: current_user).where.not('phone' => '').length %> Contacts Tel</span>
+          </a>
+        </li>
+        <li class="sidebar-minimize-end">
+          <a>
+            <span class="icon"><i class="fa fa-money"></i></span>
+            <span class="text"><%= current_user.credits %> CREDITS SMS</span>
+          </a>
+        </li>
 
+      </ul><!-- /.sidebar-menu -->
+      <!--/ End left navigation - menu -->
 
+    </aside><!-- /#sidebar-left -->
+    <!--/ END SIDEBAR LEFT -->
 
-    <!-- <li>
-    <a href="#">
-    <span class="icon"><i class="fa fa-rocket"></i></span>
-    <span class="text">Envoyer des sms</span>
-  </a>
-</li> -->
-<!--/ End navigation - landing -->
-<li class="sidebar-category" style="margin-top:75px;">
-  <span>Informations</span>
-</li>
+    <%= yield %>
 
-<li class="sidebar-minimize">
-  <a>
-    <span class="icon"><i class="fa fa-group"></i></span>
-    <span class="text"><%= current_user.contacts.length %> Contacts Emails</span>
-  </a>
-</li>
-<li class="sidebar-minimize">
-  <a>
-    <span class="icon"><i class="fa fa-mobile"></i></span>
-    <span class="text"><%= Contact.where(user_id: current_user).where.not('phone' => '').length %> Contacts Tel</span>
-  </a>
-</li>
-<li class="sidebar-minimize-end">
-  <a>
-    <span class="icon"><i class="fa fa-money"></i></span>
-    <span class="text"><%= current_user.credits %> CREDITS SMS</span>
-  </a>
-</li>
+    <!-- START @SIDEBAR RIGHT -->
+    <aside id="sidebar-right">
 
-</ul><!-- /.sidebar-menu -->
-<!--/ End left navigation - menu -->
-
-<!-- Start left navigation - footer -->
-<!-- /.sidebar-footer -->
-<!--/ End left navigation - footer -->
-
-</aside><!-- /#sidebar-left -->
-<!--/ END SIDEBAR LEFT -->
-
-<%= yield %>
-
-
-<!-- START @SIDEBAR RIGHT -->
-<aside id="sidebar-right">
-
-  <div class="panel panel-tab">
-    <div class="panel-heading no-padding">
-      <div class="pull-right">
-        <ul class="nav nav-tabs">
-          <li>
-            <a href="#sidebar-profile" data-toggle="tab">
-              <i class="fa fa-user"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#sidebar-layout" data-toggle="tab">
-              <i class="fa fa-cogs"></i>
-            </a>
-          </li>
-          <li class="active">
-            <a href="#sidebar-setting" data-toggle="tab">
-              <i class="fa fa-paint-brush"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#sidebar-chat" data-toggle="tab">
-              <i class="fa fa-comments"></i>
-            </a>
-          </li>
-        </ul>
+      <div class="panel panel-tab">
+        <div class="panel-heading no-padding">
+          <div class="pull-right">
+            <ul class="nav nav-tabs">
+              <li>
+                <a href="#sidebar-profile" data-toggle="tab">
+                  <i class="fa fa-user"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#sidebar-layout" data-toggle="tab">
+                  <i class="fa fa-cogs"></i>
+                </a>
+              </li>
+              <li class="active">
+                <a href="#sidebar-setting" data-toggle="tab">
+                  <i class="fa fa-paint-brush"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#sidebar-chat" data-toggle="tab">
+                  <i class="fa fa-comments"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
       </div>
-      <div class="clearfix"></div>
-    </div>
+    </aside><!-- /#sidebar-right -->
+    <!--/ END SIDEBAR RIGHT -->
 
-  </div>
-
-</aside><!-- /#sidebar-right -->
-<!--/ END SIDEBAR RIGHT -->
-
-</section><!-- /#wrapper -->
+  </section><!-- /#wrapper -->
 
 </body>
 
