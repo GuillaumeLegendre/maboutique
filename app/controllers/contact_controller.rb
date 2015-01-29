@@ -32,7 +32,7 @@ class ContactController < ApplicationController
   def send_email
     @contacts = Contact.where(user_id: current_user)
     @contacts = @contacts.where(gender: Contact.genders[params[:email][:gender]]) if params[:email][:gender].present?
-    @contacts = Contact.where(vip: params[:email][:vip]) if params[:email][:vip].present?
+    @contacts = @contacts.where(vip: params[:email][:vip]) if params[:email][:vip].present?
     @contacts.each do |c|
       ContactMailer.send_to_contact(c, params[:email], current_user).deliver
     end
@@ -41,6 +41,6 @@ class ContactController < ApplicationController
 
   private
   def contact_params
-    params.require(:contact).permit(:email, :last_name, :first_name, :birthday, :phone, :vip, :user_id)
+    params.require(:contact).permit(:email, :last_name, :first_name, :birthday, :phone, :vip, :user_id, :gender)
   end
 end
