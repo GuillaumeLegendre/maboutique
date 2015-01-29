@@ -85,4 +85,15 @@ Rails.application.configure do
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Graylog2.new
   config.logger = GELF::Logger.new("208.ip-92-222-15.eu", 12201, "WAN", { :host => "maboutique.pro", :facility => "heroku" })
+
+
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :user_name => "quicksite.contact@gmail.com",
+    :password  => "xghilSEotCEbirGPXzQqiQ", # SMTP password is any valid API key
+    :authentication => 'login', # Mandrill supports 'plain' or 'login'
+    :domain => 'maboutique.pro', # your domain to identify your server when connecting
+  }
 end

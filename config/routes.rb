@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'home/siteweb'
   get 'contact/new_email'
   post 'contact/send_email'
+  post 'contact/upload'
   get 'dashboard' => "dashboard#show"
 
 

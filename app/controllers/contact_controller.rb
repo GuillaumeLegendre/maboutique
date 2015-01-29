@@ -30,8 +30,12 @@ class ContactController < ApplicationController
   end
 
   def send_email
-    @contacts = Contact.where(user_id: current_user, vip: params[:email][:vip])
+    @contacts = Contact.where(user_id: current_user)
     @contacts = @contacts.where(gender: Contact.genders[params[:email][:gender]]) if params[:email][:gender].present?
+    @contacts = Contact.where(vip: params[:email][:vip]) if params[:email][:vip].present?
+    @contacts.each do |c|
+      ContactMailer.send_to_contact(c, params[:email], current_user).deliver
+    end
     redirect_to :back
   end
 
