@@ -1,0 +1,64 @@
+<!-- START @PAGE CONTENT -->
+<section id="page-content">
+
+  <!-- Start body content -->
+  <div class="body-content animated fadeIn">
+
+    <!-- Start mail page -->
+    <div class="row compose-mail-wrapper">
+
+      <div class="col-sm-12">
+        <!-- Star form compose mail -->
+        <%= form_tag("TODO", class: "form-horizontal", :multipart => true) do -%>
+          <div class="panel rounded shadow">
+            <div class="panel-heading">
+              <div class="pull-left">
+                <h3 class="panel-title">Envoyer un sms</h3>
+              </div>
+              <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body">
+              <div class="compose-mail">
+                <div class="form-group">
+                  <label for="sms_body" class="col-sm-2 control-label">Message:</label>
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <textarea id="sms_body" name="sms[body]" autofocus required cols=30 rows=20></textarea>
+                  </div>
+                </div><!-- /.form-group -->
+              </div><!-- /.compose-mail -->
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <label for="subject" class="col-sm-2 control-label">envoyer aux </label>
+                  <select name="sms[gender]" id="select_gender">
+                    <option value="">homme et femme</option>
+                    <option value="male">homme</option>
+                    <option value="female">femme</option>
+                  </select>
+                  <span> et </span>
+                  <select name="sms[vip]" id="select_vip">
+                    <option value="">tous le monde</option>
+                    <option value="true">seulement VIP</option>
+                  </select>
+                  <span class="text"> : <span id="preview_number_send"><%= Contact.where(user_id: current_user).where.not('phone' => '').length %></span> sms seront envoyés</span>
+                </div>
+              </div><!-- /.form-group -->
+            </div><!-- /.panel-body -->
+            <div class="panel-footer">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-send"></i> Envoyer SMS</button>
+              </div>
+              <div class="clearfix"></div>
+            </div><!-- /.panel-footer -->
+          </div><!-- /.panel -->
+         <% end %>
+        <!--/ End form compose mail -->
+      </div>
+    </div><!-- /.row -->
+    <!--/ End mail page -->
+
+  </div>
+  <!-- End body content -->
+
+</section><!-- /#page-content -->
+<!--/ END PAGE CONTENT -->

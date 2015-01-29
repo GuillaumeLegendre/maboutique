@@ -36,7 +36,17 @@ class ContactController < ApplicationController
     @contacts.each do |c|
       ContactMailer.send_to_contact(c, params[:email], current_user).deliver
     end
-    redirect_to :back
+    redirect_to :back #TODO message validate
+  end
+
+  def new_sms
+  end
+
+  def preview_number_send_sms
+    @contacts = Contact.where(user_id: current_user).where.not('phone' => '')
+    @contacts = @contacts.where(gender: Contact.genders[params[:gender]]) if params[:gender].present?
+    @contacts = @contacts.where(vip: params[:vip]) if params[:vip].present?
+    render json: @contacts.length
   end
 
   private

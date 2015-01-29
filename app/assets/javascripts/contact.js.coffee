@@ -39,3 +39,16 @@ $(document).ready ->
     #   editor.insertImage welEditable
     #   sendFile files[0], editor, welEditable
     #   return
+
+  $("select").change ->
+    $.ajax
+      url: "/contact/preview_number_send_sms"
+      type: "GET"
+      data:
+        vip: $("#select_vip").val(),
+        gender: $("#select_gender").val()
+      contentType: "application/json; charset=utf-8"
+
+      success: (response) ->
+        $("#preview_number_send").text(response)
+        return
