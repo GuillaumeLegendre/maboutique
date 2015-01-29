@@ -2,14 +2,9 @@
 <html>
 <head>
   <title>Maboutique</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-  <!-- ----------------------------     CSS import theme      ---------------------------- -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
   <!-- START @FONT STYLES -->
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet">
@@ -23,14 +18,9 @@
   <link href="/css/components.css" rel="stylesheet">
   <!--/ END THEME STYLES -->
 
-  <!-- ----------------------------     END CSS import theme  ---------------------------- -->
-
-  <!-- ----------------------------     JS import theme       ---------------------------- -->
-
-  <!-- ----------------------------     END JS import theme   ---------------------------- -->
-
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag params[:controller] %>
   <%= csrf_meta_tags %>
 </head>
 
