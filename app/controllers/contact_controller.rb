@@ -9,11 +9,11 @@ class ContactController < ApplicationController
     end
     @c = Contact.create(contact_params)
     if @c.valid?
-      redirect_to :back, {notice: "Votre contact à bien été enregistré"}
+      redirect_to :back, {notice: "Votre contact à bien été enregistré."}
     else
       errors = "
       <div id='error_explanation'>
-      <h2> #{ActionController::Base.helpers.pluralize(3, "erreur")} ont empéché ce contact d'être enregistré :</h2>
+      <h2> #{ActionController::Base.helpers.pluralize(@c.errors.length, "erreur")} ont empéché ce contact d'être enregistré :</h2>
       <ul>"
         @c.errors.full_messages.each do |msg|
           errors += "<li>#{msg}</li>"
@@ -36,7 +36,7 @@ class ContactController < ApplicationController
     @contacts.each do |c|
       ContactMailer.send_to_contact(c, params[:email], current_user).deliver
     end
-    redirect_to :back #TODO message validate
+    redirect_to :back, {notice: "Votre va être envoyé."}
   end
 
   def new_sms
