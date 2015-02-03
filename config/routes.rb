@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'contact/new_email'
   post 'contact/send_email'
   get 'contact/new_sms'
-  post 'contact/upload'
+  post 'contact/save_template'
+  post 'contact/edit_template'
   get 'contact/preview_number_send_sms'
   get 'dashboard' => "dashboard#show"
 

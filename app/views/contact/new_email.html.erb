@@ -18,16 +18,29 @@
               <div class="clearfix"></div>
             </div><!-- /.panel-heading -->
             <div class="panel-body">
+              <div class="template">
+                <% unless current_user.templates.empty? %>
+                  <select id="select-template">
+                    <% current_user.templates.each do |t| %>
+                      <option value="<%= t.id %>"><%= t.subject %></option>
+                    <% end %>
+                  </select>
+                  <button type="button" id="load-template" class="btn btn-success btn-sm">Charger le modèle</button>
+                  <button type="button" id="save-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Éditer le modèle actuel</button>
+                <% end %>
+                <button type="button" id="save-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Sauvegarder l'email en tant que modèle</button>
+              </div>
+
               <div class="compose-mail">
                 <div class="form-group">
                   <label for="subject" class="col-sm-2 control-label">Sujet:</label>
                   <div class="col-sm-10">
-                    <input type="text" id="subject" class="form-control input-sm" name="email[subject]" required autofocus>
+                    <input type="text" id="subject" class="form-control input-sm" name="email[subject]" required autofocus value="<%= @template.subject if @template %>" >
                   </div>
                 </div><!-- /.form-group -->
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                    <textarea class="summernote" name="email[body]"></textarea>
+                    <textarea class="summernote" name="email[body]"><%= @template.body if @template %></textarea>
                   </div>
                 </div><!-- /.form-group -->
               </div><!-- /.compose-mail -->
