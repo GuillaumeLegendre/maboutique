@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150131193420) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "gender",     default: 1
+    t.integer  "gender",     default: 0
   end
 
   create_table "templates", force: true do |t|
