@@ -97,7 +97,7 @@
           </a>
           <div class="media-body">
             <h4 class="media-heading">Bonjour,</h4>
-            <small><a href="<%= destroy_user_session_path %>" data-method="delete" rel="nofollow">Se déconnecter</a></small>
+            <small><%= link_to('Se déconnecter', destroy_user_session_path, :method => :delete) %></small>
           </div>
         </div>
       </div><!-- /.sidebar-content -->
