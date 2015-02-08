@@ -1,5 +1,6 @@
 class ContactController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :valid_subscription?, :except => :create
   layout "backoffice"
 
   def create
@@ -27,6 +28,9 @@ class ContactController < ApplicationController
   end
 
   def new_email
+    if params[:template] =~ /^[0-9]+$/
+      @template = current_user.templates.where(id: params[:template]).first
+    end
   end
 
   def send_email
@@ -36,7 +40,18 @@ class ContactController < ApplicationController
     @contacts.each do |c|
       ContactMailer.send_to_contact(c, params[:email], current_user).deliver
     end
-    redirect_to :back, {notice: "Votre va être envoyé."}
+    redirect_to :back, {notice: "Votre email va être envoyé."}
+  end
+
+  def save_template
+    params[:template][:user_id] = current_user.id
+
+    @t = Template.create(template_params)
+    if @t.valid?
+      render json: true
+    else
+      render json: @t.errors
+    end
   end
 
   def new_sms
@@ -52,5 +67,15 @@ class ContactController < ApplicationController
   private
   def contact_params
     params.require(:contact).permit(:email, :last_name, :first_name, :birthday, :phone, :vip, :user_id, :gender)
+  end
+
+  def template_params
+    params.require(:template).permit(:subject, :body, :user_id)
+  end
+
+  def valid_subscription?
+    if Date.today >= current_user.end_subscription
+      # return redirect_to contact_payement_path, {notice: "Votre abonnement à expiré. Veuiller vous réabonner."}
+    end
   end
 end

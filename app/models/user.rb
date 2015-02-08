@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   validates :phone, presence: true
 
   has_many :contacts
+  has_many :templates
 end

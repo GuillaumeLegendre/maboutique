@@ -1,44 +1,7 @@
 $(document).ready ->
-
-  # # send the file
-  # sendFile = (file, editor, welEditable) ->
-  #   data = new FormData()
-  #   data.append "file", file
-  #   $.ajax
-  #     data: data
-  #     type: "POST"
-  #     xhr: ->
-  #       myXhr = $.ajaxSettings.xhr()
-  #       myXhr.upload.addEventListener "progress", progressHandlingFunction, false  if myXhr.upload
-  #       myXhr
-  #
-  #     url: "/contact/upload"
-  #     cache: false
-  #     contentType: false
-  #     processData: false
-  #     success: (url) ->
-  #       editor.insertImage welEditable, url
-  #       return
-  #   return
-  #
-  # # update progress bar
-  # progressHandlingFunction = (e) ->
-  #   if e.lengthComputable
-  #     $("progress").attr
-  #       value: e.loaded
-  #       max: e.total
-  #
-  #     # reset progress on complete
-  #     $("progress").attr "value", "0.0"  if e.loaded is e.total
-  #   return
-
   $(".summernote").summernote
     height: 300,
     minHeight: 300
-    # onImageUpload: (files, editor, welEditable) ->
-    #   editor.insertImage welEditable
-    #   sendFile files[0], editor, welEditable
-    #   return
 
   $("select").change ->
     $.ajax
@@ -52,3 +15,44 @@ $(document).ready ->
       success: (response) ->
         $("#preview_number_send").text(response)
         return
+
+  $("#save-template").click ->
+    if $(".summernote").code() && $("#subject").val()
+      $.ajax
+        url: "/contact/save_template"
+        type: "POST"
+        beforeSend: (xhr) ->
+          xhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')
+          return
+        data:
+          template:
+            subject: $("#subject").val(),
+            body: $(".summernote").code()
+        success: (response) ->
+          $("#preview_number_send").text(response)
+          return
+    else
+      alert("Vous devez compléter le sujet et le corps de l'email pour pouvoir le sauvegarder en tant que template.")
+
+  $("#edit-template").click ->
+    if $(".summernote").code() && $("#subject").val()
+      alert("TODO: Faire la demande de validation avant de valider")
+      $.ajax
+        url: "/contact/save_template"
+        type: "POST"
+        beforeSend: (xhr) ->
+          xhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')
+          return
+        data:
+          template:
+            subject: $("#subject").val(),
+            body: $(".summernote").code()
+            template_id: $("#select-template").val();
+        success: (response) ->
+          $("#preview_number_send").text(response)
+          return
+    else
+      alert("Vous devez compléter le sujet et le corps de l'email pour pouvoir le sauvegarder en tant que template.")
+
+  $("#load-template").click ->
+    window.location.href = "/contact/new_email?template=" + $("#select-template").val();
