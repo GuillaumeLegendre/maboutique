@@ -54,6 +54,18 @@ class ContactController < ApplicationController
     end
   end
 
+  def edit_template
+    params[:template][:user_id] = current_user.id
+    @t = current_user.templates.where(id: params[:template_id]).first
+
+    @t.update_attributes(template_params) if @t
+    if @t.valid?
+      render json: true
+    else
+      render json: @t.errors
+    end
+  end
+
   def new_sms
   end
 
@@ -70,7 +82,7 @@ class ContactController < ApplicationController
   end
 
   def template_params
-    params.require(:template).permit(:subject, :body, :user_id)
+    params.require(:template).permit(:subject, :body, :user_id, :template_id)
   end
 
   def valid_subscription?

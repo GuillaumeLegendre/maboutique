@@ -26,7 +26,7 @@
                     <% end %>
                   </select>
                   <button type="button" id="load-template" class="btn btn-success btn-sm">Charger le modèle</button>
-                  <button type="button" id="save-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Éditer le modèle actuel</button>
+                  <button type="button" id="edit-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Éditer le modèle actuel</button>
                 <% end %>
                 <button type="button" id="save-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Sauvegarder l'email en tant que modèle</button>
               </div>
@@ -79,3 +79,21 @@
 
 </section><!-- /#page-content -->
 <!--/ END PAGE CONTENT -->
+
+<div class="modal fade" id="confirm_edit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Éditer le template actuel</h4>
+      </div>
+      <div class="modal-body">
+        <p>Le template avec le nom : <span id="subject_template"></span></br> va être édité.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary" id="valid-edit-template">Éditer</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
