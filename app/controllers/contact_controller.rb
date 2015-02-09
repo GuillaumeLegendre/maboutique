@@ -69,6 +69,15 @@ class ContactController < ApplicationController
   def new_sms
   end
 
+  def upload_img
+    u = current_user
+    img = Image.new
+    img.picture = params[:file]
+    u.images << img
+
+    render json: img.picture.url.to_json
+  end
+
   def preview_number_send_sms
     @contacts = Contact.where(user_id: current_user).where.not('phone' => '')
     @contacts = @contacts.where(gender: Contact.genders[params[:gender]]) if params[:gender].present?

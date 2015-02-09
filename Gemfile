@@ -48,6 +48,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
 gem 'activeadmin', github: 'activeadmin'
+gem 'carrierwave'
 
 group :development do
   gem 'pry'

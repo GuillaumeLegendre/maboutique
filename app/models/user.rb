@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
 
   has_many :contacts
   has_many :templates
+  has_many :images
 end

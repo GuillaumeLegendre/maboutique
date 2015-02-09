@@ -3,6 +3,24 @@ $(document).ready ->
     height: 300,
     minHeight: 300
     maximumImageFileSize: 500000
+    onImageUpload: (files, editor, welEditable) ->
+      sendFile files[0], editor, welEditable
+      return
+
+  sendFile = (file, editor, welEditable) ->
+    data = new FormData
+    data.append 'file', file
+    $.ajax
+      data: data
+      type: 'POST'
+      url: '/contact/upload_img'
+      cache: false
+      contentType: false
+      processData: false
+      success: (url) ->
+        editor.insertImage welEditable, url
+        return
+    return
 
   $("select").change ->
     $.ajax
