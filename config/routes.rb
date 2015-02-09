@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post 'contact/upload_img'
   get 'contact/preview_number_send_sms'
   get 'dashboard' => "dashboard#show"
+  get 'payement' => "payement#show"
 
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]

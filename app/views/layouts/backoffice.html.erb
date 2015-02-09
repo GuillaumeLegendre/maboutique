@@ -139,7 +139,17 @@
         <li class="sidebar-category" style="margin-top:75px;">
           <span>Informations</span>
         </li>
-
+        <li class="sidebar-minimize">
+          <a href="<%= payement_path %>" >
+            <% if current_user.end_subscription > DateTime.now %>
+            <span class="icon"><i class="fa fa-thumbs-o-up"></i></span>
+              <span class="text">Abonnement: <%= current_user.end_subscription.strftime("%m/%d/%y") %></span>
+            <% else %>
+              <span class="icon"><i class="fa fa-thumbs-o-down"></i></span>
+              <span class="text" style="color:red;">Abonnement expiré</span>
+            <% end %>
+          </a>
+        </li>
         <li class="sidebar-minimize">
           <a>
             <span class="icon"><i class="fa fa-group"></i></span>
