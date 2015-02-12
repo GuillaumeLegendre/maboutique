@@ -79,7 +79,7 @@ class PayementController < ApplicationController
     ipn.send_back(request.raw_post)
     if ipn.verified?
       u = User.find(params[:user_id])
-      if u.end_subscription > Date.now
+      if u.end_subscription > DateTime.now
         new_end_date = u.end_subscription.next_year
       else
         new_end_date = DateTime.now.to_date.next_year
