@@ -15,7 +15,16 @@ Rails.application.routes.draw do
   post 'contact/upload_img'
   get 'contact/preview_number_send_sms'
   get 'dashboard' => "dashboard#show"
-  get 'payement' => "payement#show"
+
+  resources :payement do
+    get "buy_one_year", :on => :collection
+    post "pay_sms", :on => :collection
+    post "ipn_notification_year", :on => :collection
+    post "ipn_notification_credits", :on => :collection
+    get "registration_successfully", :on => :collection
+    get "credits_successfully", :on => :collection
+    get "canceled", :on => :collection
+  end
 
 
   devise_for :users, controllers: {registrations: "users/registrations", sessions: "users/sessions", passwords: "users/passwords"}, skip: [:sessions, :registrations]

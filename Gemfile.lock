@@ -109,6 +109,7 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (1.8.2)
+    jsonschema (2.0.2)
     jwt (1.2.0)
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
@@ -144,6 +145,9 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paypal_adaptive (0.3.8)
+      json (~> 1.0)
+      jsonschema (~> 2.0.0)
     pg (0.18.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
@@ -426,6 +430,7 @@ DEPENDENCIES
   lograge
   omniauth
   omniauth-facebook
+  paypal_adaptive (~> 0.3.8)
   pg
   pry
   rails (= 4.1.4)

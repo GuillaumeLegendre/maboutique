@@ -1,0 +1,81 @@
+<!-- START @PAGE CONTENT -->
+<section id="page-content">
+
+  <!-- Start body content -->
+  <div class="body-content animated fadeIn">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>BIENVENUE SUR MABOUTIQUE</h1></br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <div class="panel rounded shadow">
+          <!-- Start ribbon wrapper -->
+          <div class="ribbon-wrapper">
+            <div class="ribbon">Bientôt</div>
+          </div>
+          <!--/ End ribbon wrapper -->
+          <div class="panel-body text-center bg-teal rounded">
+            <div class="text-muted">
+              <i class="fa fa-4x fa-user"></i>
+            </div>
+            <h2 class="text-strong">S'inscrire pour 1 mois 19€</h2>
+            <p>test</p>
+            <button class="btn btn-warning btn-alt mb-5" disabled="disabled">S'inscrire</button>
+          </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+      </div>
+
+      <div class="col-md-6 col-sm-6">
+        <div class="panel rounded shadow">
+          <div class="panel-body text-center bg-teal rounded">
+            <div class="text-muted">
+              <i class="fa fa-4x fa-bullhorn"></i>
+            </div>
+            <h2 class="text-strong">S'inscrire pour 1 an 190€</h2>
+            <p></p>
+            <a href="<%= buy_one_year_payement_index_path %>" class="btn btn-warning btn-alt mb-5">S'inscire</i></a>
+          </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-teal rounded shadow no-overflow">
+          <div class="panel-heading">
+            <h3 class="panel-title">Pack sms</h3>
+          </div><!-- /.panel-heading -->
+          <!--/ End ribbon wrapper -->
+          <div class="panel-body ">
+            <p></p>
+
+            <%= form_tag(pay_sms_payement_index_path, {class: "form-horizontal form-bordered"}) do |f| %>
+              <div class="form-body">
+                <div class="col-sm-offset-3">
+                  <button type="submit" class="btn btn-primary btn-lg pull-right">Acheter les sms</button></p>
+                </div>
+                <div class="form-group" style="border:0;">
+                  <label class="col-sm-2 control-label">Nombre de SMS</label>
+                  <div class="col-sm-2">
+                    <input type="number" id="input-number-sms" class="form-control input-sm" name="sms[number]" placeholder="10" min="1">
+                  </div>
+                  <div class="col-sm-2 hide" id="group-price">
+                    Prix : <span id="price">10</span>€
+                  </div>
+                </div><!-- /.form-group -->
+              </div><!-- /.form-body -->
+            <% end %>
+
+          </div><!-- /.panel-body -->
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.body-content -->
+  <!--/ End body content -->
+
+</section><!-- /#page-content -->
+<!--/ END PAGE CONTENT -->

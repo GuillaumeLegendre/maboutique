@@ -49,6 +49,7 @@ gem 'omniauth-facebook'
 gem 'bootstrap-datepicker-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
+gem 'paypal_adaptive', '~> 0.3.8'
 
 group :development do
   gem 'pry'
