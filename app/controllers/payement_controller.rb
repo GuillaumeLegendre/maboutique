@@ -97,7 +97,7 @@ class PayementController < ApplicationController
     ipn.send_back(request.raw_post)
     if ipn.verified?
       u = User.find(params[:user_id])
-      u.update_attributes(credits: u.credits + params[:credits])
+      u.update_attributes(credits: u.credits + params[:credits].to_i)
     else
       puts "ipn.verified? failed"
       puts ipn.inspect
