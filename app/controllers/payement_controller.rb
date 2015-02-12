@@ -1,7 +1,7 @@
 class PayementController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user! :except => [:ipn_notification_year, :ipn_notification_credits]
+  protect_from_forgery :except => [:ipn_notification_year, :ipn_notification_credits]
   layout "backoffice"
-  protect_from_forgery :except => [:ipn_notification]
 
   def index
   end
