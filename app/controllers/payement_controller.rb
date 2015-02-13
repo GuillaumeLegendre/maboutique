@@ -64,14 +64,14 @@ class PayementController < ApplicationController
                                 })
 
     response = ppr.create_recurring_profile
-    user = User.find(params[:u])
+    u = User.find(params[:u])
     if u.end_subscription > DateTime.now
       new_end_date = u.end_subscription.next_month
     else
       new_end_date = DateTime.now.to_date.next_month
     end
 
-    user.update_attributes( :paypal_recurring_account => params[:payer_email],
+    u.update_attributes( :paypal_recurring_account => params[:payer_email],
                             :paypal_recurring_uid => response.profile_id,
                             :paypal_recurring_token => params["token"],
                             :paypal_recurring_payerid => params["PayerID"],
