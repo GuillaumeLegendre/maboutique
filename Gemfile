@@ -30,7 +30,7 @@ gem 'spring',        group: :development
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -50,6 +50,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
 gem 'paypal_adaptive', '~> 0.3.8'
+gem 'paypal-recurring'
 
 group :development do
   gem 'pry'

@@ -114,6 +114,7 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.9.3)
     libv8 (3.16.14.7)
     lograge (0.3.1)
       actionpack (>= 3)
@@ -145,6 +146,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paypal-recurring (1.1.0)
     paypal_adaptive (0.3.8)
       json (~> 1.0)
       jsonschema (~> 2.0.0)
@@ -174,6 +176,7 @@ GEM
       activesupport (= 4.1.4)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
     rake (10.4.2)
     ransack (1.6.2)
       actionpack (>= 3.0)
@@ -409,6 +412,10 @@ GEM
     uglifier (2.7.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     validates_formatting_of (0.8.1)
       activemodel (~> 4.0)
     warden (1.2.3)
@@ -430,6 +437,7 @@ DEPENDENCIES
   lograge
   omniauth
   omniauth-facebook
+  paypal-recurring
   paypal_adaptive (~> 0.3.8)
   pg
   pry
@@ -441,4 +449,5 @@ DEPENDENCIES
   therubyracer
   tzinfo-data
   uglifier (>= 1.3.0)
+  unicorn
   validates_formatting_of
