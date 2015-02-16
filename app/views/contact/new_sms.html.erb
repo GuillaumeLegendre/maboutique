@@ -9,7 +9,7 @@
 
       <div class="col-sm-12">
         <!-- Star form compose mail -->
-        <%= form_tag("TODO", class: "form-horizontal", :multipart => true) do -%>
+        <%= form_tag(contact_send_sms_path, class: "form-horizontal", :multipart => true) do -%>
           <div class="panel rounded shadow">
             <div class="panel-heading">
               <div class="pull-left">
@@ -22,7 +22,7 @@
                 <div class="form-group">
                   <label for="sms_body" class="col-sm-2 control-label">Message:</label>
                   <div class="col-sm-offset-2 col-sm-10">
-                    <textarea id="sms_body" name="sms[body]" autofocus required cols=30 rows=20></textarea>
+                    <textarea id="sms_body" name="sms[body]" autofocus required cols=30 rows=12 maxlength=160></textarea>
                   </div>
                 </div><!-- /.form-group -->
               </div><!-- /.compose-mail -->

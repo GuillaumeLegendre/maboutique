@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'contact/new_email'
   post 'contact/send_email'
   get 'contact/new_sms'
+  post 'contact/send_sms'
   post 'contact/save_template'
   post 'contact/edit_template'
   post 'contact/upload_img'

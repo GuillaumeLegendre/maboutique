@@ -50,6 +50,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
 gem 'paypal_adaptive', '~> 0.3.8'
+gem 'paypal-recurring'
+gem 'rest-client', '~> 1.7.2'
+
 
 group :development do
   gem 'pry'
