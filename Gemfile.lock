@@ -146,6 +146,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paypal-recurring (1.1.0)
     paypal_adaptive (0.3.8)
       json (~> 1.0)
       jsonschema (~> 2.0.0)
@@ -434,6 +435,7 @@ DEPENDENCIES
   lograge
   omniauth
   omniauth-facebook
+  paypal-recurring
   paypal_adaptive (~> 0.3.8)
   pg
   pry
