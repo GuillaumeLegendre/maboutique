@@ -52,6 +52,8 @@ gem 'carrierwave'
 gem 'paypal_adaptive', '~> 0.3.8'
 gem 'paypal-recurring'
 gem 'rest-client', '~> 1.7.2'
+gem 'whenever', :require => false
+gem 'birthday', '~> 0.3.1'
 
 
 group :development do

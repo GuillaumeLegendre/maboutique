@@ -1,0 +1,60 @@
+<!-- START @PAGE CONTENT -->
+<section id="page-content">
+
+  <!-- Start body content -->
+  <div class="body-content animated fadeIn">
+
+    <!-- Start mail page -->
+    <div class="row compose-mail-wrapper">
+
+      <div class="col-sm-12">
+        <!-- Star form compose mail -->
+        <%= form_tag(contact_save_birthday_template_path, class: "form-horizontal", :multipart => true) do -%>
+          <input type="text" class="hide" name="template[id]" required autofocus value="<%= @template.id if @template %>" >
+          <div class="panel rounded shadow">
+            <div class="panel-heading">
+              <div class="pull-left">
+                <h3 class="panel-title">Envoyer un email</h3>
+              </div>
+              <div class="clearfix"></div>
+            </div><!-- /.panel-heading -->
+            <div class="panel-body">
+
+              <div class="compose-mail">
+                <div class="form-group">
+                  <label for="subject" class="col-sm-2 control-label">Sujet:</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="subject" class="form-control input-sm" name="template[subject]" required autofocus value="<%= @template.subject if @template %>" >
+                  </div>
+                </div><!-- /.form-group -->
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <textarea class="summernote" name="template[body]"><%= @template.body if @template %></textarea>
+                  </div>
+                </div><!-- /.form-group -->
+              </div><!-- /.compose-mail -->
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input type="checkbox" name="template[birthday]" value="true" <%= "checked" if current_user.birthday_mail %> > Activer les emails d'anniversaire
+                </div>
+              </div><!-- /.form-group -->
+            </div><!-- /.panel-body -->
+            <div class="panel-footer">
+              <div class="pull-right">
+                <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-save"></i>Sauver en tant qu'email d'anniversaire</button>
+              </div>
+              <div class="clearfix"></div>
+            </div><!-- /.panel-footer -->
+          </div><!-- /.panel -->
+         <% end %>
+        <!--/ End form compose mail -->
+      </div>
+    </div><!-- /.row -->
+    <!--/ End mail page -->
+
+  </div>
+  <!-- End body content -->
+
+</section><!-- /#page-content -->
+<!--/ END PAGE CONTENT -->

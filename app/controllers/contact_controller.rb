@@ -44,6 +44,23 @@ class ContactController < ApplicationController
     redirect_to :back, {notice: "Votre email va être envoyé."}
   end
 
+  def new_birthday_email
+    @template = Template.where(user_id: current_user, birthday: true).first
+    if @template.nil?
+      @template = Template.create(user: current_user, birthday: true)
+    end
+  end
+
+  def save_birthday_template
+    birthday = params[:template][:birthday]
+    params[:template][:user_id] = current_user.id
+
+    @t = current_user.templates.where(id: params[:template][:id]).first
+    @t.update_attributes(template_params) if @t
+    current_user.update_attributes(birthday_mail: birthday)
+    redirect_to :back, {notice: "Votre email d'anniversaire à été enregistré."}
+  end
+
   def save_template
     params[:template][:user_id] = current_user.id
 
@@ -79,7 +96,7 @@ class ContactController < ApplicationController
     end
     resp = RestClient.post 'http://www.octopush-dm.com/api/sms', {
       user_login: 'quicksite.contact@gmail.com',
-      api_key: 'faQ8nzpwbndTeYpImkjE52gi4jBKq58I',
+      api_key: 'faQ8nzpwbndTeYpImkjE52gi4jBKq58I',#TODO REMOVE THIS SHIT
       sms_recipients: @contacts.collect { |x| x.phone}.join(","),
       sms_text: params[:sms][:body],
       sms_type: 'XXX',
@@ -130,7 +147,6 @@ class ContactController < ApplicationController
     end
   end
 
-  private
   def contacts_send_sms gender = nil, vip = nil
     @contacts = Contact.where(user_id: current_user).where.not('phone' => '')
     @contacts = @contacts.where(gender: Contact.genders[gender]) if gender.present?

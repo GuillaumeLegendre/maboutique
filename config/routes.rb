@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'home/siteweb'
   get 'contact/new_email'
   post 'contact/send_email'
+  get 'contact/new_birthday_email'
+  post 'contact/save_birthday_template'
   get 'contact/new_sms'
   post 'contact/send_sms'
   post 'contact/save_template'
