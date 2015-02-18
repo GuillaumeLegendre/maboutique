@@ -1,13 +1,83 @@
 class PayementController < ApplicationController
-  before_filter :authenticate_user!, :except => [:ipn_notification_year, :ipn_notification_credits]
-  protect_from_forgery :except => [:ipn_notification_year, :ipn_notification_credits]
+  before_filter :authenticate_user!, :except => [:ipn_notification_year, :ipn_notification_credits, :ipn_notification_recurring]
+  protect_from_forgery :except => [:ipn_notification_year, :ipn_notification_credits, :ipn_notification_recurring]
   layout "backoffice"
 
   def index
   end
 
   def pay_monthly
+    ppr = PayPal::Recurring.new({
+                                  :return_url   => paypal_recurring_success_payement_index_url,
+                                  :cancel_url   => payement_index_url,
+                                  :description  => "Abonnement au mois",
+                                  :ipn_url      => ipn_notification_recurring_payement_index_url,
+                                  :amount       => 19.00,
+                                  :currency     => "EUR"
+                                })
 
+    response = ppr.checkout
+    respond_to do |format|
+      if response.valid?
+        format.html { redirect_to response.checkout_url }
+      else
+        puts "Erreur Paypal"
+        puts response.errors.inspect
+        format.html { redirect_to payement_index_url, :notice => "Erreur paypal" }
+      end
+    end
+  end
+
+  def paypal_recurring_success
+    ppr = PayPal::Recurring.new({
+                                  :token       => params["token"],
+                                  :payer_id    => params["PayerID"],
+                                  :return_url   => paypal_recurring_success_payement_index_url,
+                                  :cancel_url   => payement_index_url,
+                                  :description  => "Abonnement au mois",
+                                  :ipn_url      => ipn_notification_recurring_payement_index_url + "?token=#{params[:token]}&payerId=#{params[:PayerID]}&u=#{current_user.id}",
+                                  :amount       => 19.00,
+                                  :currency     => "EUR"
+                                })
+
+    if ppr.request_payment.approved?
+      redirect_to payement_index_url, :notice => "Votre inscription est complète. nous sommes en attente de validation de PayPal."
+    else
+      redirect_to payement_index_url, :alert => "Votre payement n'a pas été approuvé"
+    end
+  end
+
+  def ipn_notification_recurring
+    ppr = PayPal::Recurring.new({
+                                  :amount      => 19,
+                                  :currency    => "EUR",
+                                  :description => "Abonnement au mois",
+                                  :ipn_url     => ipn_notification_recurring_payement_index_url,
+                                  :frequency   => 1,
+                                  :token       => params["token"],
+                                  :period      => :monthly,
+                                  :reference   => "abonnement_mensuel",
+                                  :payer_id    => params["PayerID"],
+                                  :start_at    => Time.now,
+                                  :failed      => 1,
+                                  :outstanding => :next_billing
+                                })
+
+    response = ppr.create_recurring_profile
+    u = User.find(params[:u])
+    if u.end_subscription > DateTime.now
+      new_end_date = u.end_subscription.next_month
+    else
+      new_end_date = DateTime.now.to_date.next_month
+    end
+
+    u.update_attributes( :paypal_recurring_account => params[:payer_email],
+                            :paypal_recurring_uid => response.profile_id,
+                            :paypal_recurring_token => params["token"],
+                            :paypal_recurring_payerid => params["PayerID"],
+                            :end_subscription => new_end_date
+                          )
+    render :nothing => true
   end
 
   def buy_one_year

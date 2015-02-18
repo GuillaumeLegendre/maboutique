@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     get "registration_successfully", :on => :collection
     get "credits_successfully", :on => :collection
     get "canceled", :on => :collection
+
+    get "pay_monthly", :on => :collection
+    get "paypal_recurring_success", :on => :collection
+    post "ipn_notification_recurring", :on => :collection
   end
 
 

@@ -18,3 +18,6 @@
 .DS_Store
 
 public/uploads
+
+config/paypal_adaptive.yml
+config/initializers/paypal_recurring.rb
