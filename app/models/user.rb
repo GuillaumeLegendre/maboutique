@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   has_many :contacts
   has_many :templates
   has_many :images
+
+  def check_subscription?
+    Date.today >= self.end_subscription
+  end
 end
