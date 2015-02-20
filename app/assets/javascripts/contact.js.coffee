@@ -48,7 +48,7 @@ $(document).ready ->
             subject: $("#subject").val(),
             body: $(".summernote").code()
         success: (response) ->
-          $("#preview_number_send").text(response)
+          alert("Votre template a été sauvegardé.")
           return
     else
       alert("Vous devez compléter le sujet et le corps de l'email pour pouvoir le sauvegarder en tant que template.")
