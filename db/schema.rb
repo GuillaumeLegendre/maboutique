@@ -98,11 +98,11 @@ ActiveRecord::Schema.define(version: 20150217011955) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "end_subscription",         default: '1999-12-31'
-    t.boolean  "birthday_mail",            default: false
     t.string   "paypal_recurring_account"
     t.string   "paypal_recurring_uid"
     t.string   "paypal_recurring_token"
     t.string   "paypal_recurring_payerid"
+    t.boolean  "birthday_mail",            default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

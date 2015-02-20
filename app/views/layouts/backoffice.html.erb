@@ -143,7 +143,7 @@
           <a href="<%= payement_index_path %>" >
             <% if current_user.end_subscription > DateTime.now %>
             <span class="icon"><i class="fa fa-thumbs-o-up"></i></span>
-              <span class="text">Abonnement: <%= current_user.end_subscription.strftime("%m/%d/%y") %></span>
+              <span class="text">Abonnement: <%= current_user.end_subscription.strftime("%d/%m/%y") %></span>
             <% else %>
               <span class="icon"><i class="fa fa-thumbs-o-down"></i></span>
               <span class="text" style="color:red;">Abonnement expiré</span>
@@ -163,7 +163,7 @@
           </a>
         </li>
         <li class="sidebar-minimize-end">
-          <a>
+          <a href="<%= payement_index_path %>" >
             <span class="icon"><i class="fa fa-money"></i></span>
             <span class="text"><%= current_user.credits %> CREDITS SMS</span>
           </a>
