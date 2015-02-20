@@ -18,7 +18,8 @@ $(document).ready ->
       contentType: false
       processData: false
       success: (url) ->
-        editor.insertImage welEditable, url
+        console.log window.location.origin + url
+        editor.insertImage welEditable, window.location.origin + url
         return
     return
 
