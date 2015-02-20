@@ -96,11 +96,10 @@ class ContactController < ApplicationController
     end
     resp = RestClient.post 'http://www.octopush-dm.com/api/sms', {
       user_login: 'quicksite.contact@gmail.com',
-      api_key: 'faQ8nzpwbndTeYpImkjE52gi4jBKq58I',#TODO REMOVE THIS SHIT
+      api_key: 'faQ8nzpwbndTeYpImkjE52gi4jBKq58I',
       sms_recipients: @contacts.collect { |x| x.phone}.join(","),
       sms_text: params[:sms][:body],
       sms_type: 'XXX',
-      request_mode: 'simu'#TODO remove
     }
     h = Hash.from_xml(resp)
 
