@@ -142,7 +142,7 @@ class ContactController < ApplicationController
 
   def valid_subscription?
     unless current_user.check_subscription?
-      return redirect_to payement_path, {notice: "Votre abonnement à expiré. Veuiller vous réabonner."}
+      return redirect_to payement_index_path, {notice: "Votre abonnement à expiré. Veuiller vous réabonner."}
     end
   end
 
