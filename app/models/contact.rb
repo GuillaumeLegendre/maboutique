@@ -14,6 +14,7 @@ class Contact < ActiveRecord::Base
         t = c.user.templates.where(birthday: true).first
         email = {subject: t.subject, body: t.body}
         ContactMailer.send_to_contact(c, email, c.user).deliver
+        puts "Birthday email send to #{c.inspect} by #{c.user.inspect}"
       end
     end
   end
