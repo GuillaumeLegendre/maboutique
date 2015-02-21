@@ -124,19 +124,21 @@
         <!--/ End navigation - frontend themes -->
 
         <!-- Start navigation - dashboard -->
-        <li class="sidebar-category">
-          <span>Envoyer des emails</span>
-          <span class="pull-right"><i class="fa fa-rocket"></i></span>
+        <li class="sidebar-menu">
+          <a href=<%= contact_new_email_path %>>
+            <span class="icon"><i class="fa fa-paper-plane-o"></i></span>
+            <span class="text">Envoyer des emails</span>
         </li>
         <!--/ End navigation - dashboard -->
 
         <!-- Start navigation - landing -->
-        <li class="sidebar-category">
-          <span>Envoyer des sms</span>
-          <span class="pull-right"><i class="fa fa-rocket"></i></span>
+        <li class="sidebar-menu">
+          <a href=<%= contact_new_sms_path %>>
+          <span class="icon"><i class="fa fa-bullhorn"></i></span>
+          <span class="text">Envoyer des SMS</span>
         </li>
         <!--/ End navigation - landing -->
-        <li class="sidebar-category" style="margin-top:75px;">
+        <li class="sidebar-category" >
           <span>Informations</span>
         </li>
         <li class="sidebar-minimize">
