@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: maboutique_production
-  username: maboutique
+  username: root
   password: <%= ENV['MABOUTIQUE_DATABASE_PASSWORD'] %>
