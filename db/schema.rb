@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20150217011955) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "end_subscription",         default: '1999-12-31'
+    t.date     "end_subscription",         default: '2000-01-01'
     t.string   "paypal_recurring_account"
     t.string   "paypal_recurring_uid"
     t.string   "paypal_recurring_token"
