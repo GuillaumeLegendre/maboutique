@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   has_many :images
 
   def check_subscription?
-    Date.today >= self.end_subscription
+    Date.today <= self.end_subscription
   end
 end
