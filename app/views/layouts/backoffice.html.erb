@@ -107,7 +107,7 @@
       <ul class="sidebar-menu">
         <!-- Start navigation - frontend themes -->
         <li>
-          <a href=<%= dashboard_path %>>
+          <a href="<%= dashboard_path %>">
             <span class="icon"><i class="fa fa-leaf"></i></span>
             <span class="text">Tableau de bord</span>
           </a>
@@ -116,7 +116,7 @@
 
         <!-- Start navigation - frontend themes -->
         <li>
-          <a href=<%= new_contact_path %>>
+          <a href="<%= new_contact_path %>">
             <span class="icon"><i class="fa fa-leaf"></i></span>
             <span class="text">Ajouter un contact</span>
           </a>
@@ -124,18 +124,20 @@
         <!--/ End navigation - frontend themes -->
 
         <!-- Start navigation - dashboard -->
-        <li class="sidebar-menu">
-          <a href=<%= contact_new_email_path %>>
+        <li>
+          <a href="<%= contact_new_email_path %>">
             <span class="icon"><i class="fa fa-paper-plane-o"></i></span>
             <span class="text">Envoyer des emails</span>
+          </a>
         </li>
         <!--/ End navigation - dashboard -->
 
         <!-- Start navigation - landing -->
-        <li class="sidebar-menu">
-          <a href=<%= contact_new_sms_path %>>
-          <span class="icon"><i class="fa fa-bullhorn"></i></span>
-          <span class="text">Envoyer des SMS</span>
+        <li>
+          <a href="<%= contact_new_sms_path %>">
+            <span class="icon"><i class="fa fa-bullhorn"></i></span>
+            <span class="text">Envoyer des SMS</span>
+          </a>
         </li>
         <!--/ End navigation - landing -->
         <li class="sidebar-category" >
