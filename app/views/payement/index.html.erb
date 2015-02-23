@@ -2,15 +2,15 @@
 <section id="page-content">
 
   <!-- Start body content -->
-  <div class="body-content animated fadeIn">
+  <div class=" animated fadeIn">
     <div class="row">
       <div class="col-md-12 text-center">
         <h1>BIENVENUE SUR MABOUTIQUE</h1></br>
       </div>
     </div>
 
+    <% unless current_user.check_subscription? %>
     <div class="row">
-      <% unless current_user.check_subscription? %>
       <div class="col-md-6 col-sm-6">
         <div class="panel rounded shadow">
           <div class="panel-body text-center bg-teal rounded">
@@ -28,7 +28,7 @@
         <div class="panel rounded shadow">
           <div class="panel-body text-center bg-teal rounded">
             <div class="text-muted">
-              <i class="fa fa-4x fa-bullhorn"></i>
+              <i class="fa fa-4x fa-fighter-jet"></i>
             </div>
             <h2 class="text-strong">S'inscrire pour 1 an 190€</h2>
             <p></p>
@@ -36,7 +36,42 @@
           </div><!-- /.panel-body -->
         </div><!-- /.panel -->
       </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="panel rounded shadow">
+          <div class="panel-body text-center bg-teal rounded">
+            <div class="text-muted">
+              <i class="fa fa-4x fa-envelope"></i>
+            </div>
+            <h2 class="text-strong">Paiement par chèque : à l'ordre de Maboutique</h2>
+            <h2>Adresse : Maboutique 22 rue lainerie 69005 Lyon </h2>
+          </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+      </div>
+   </div>
+   <div class="row">
+     <div class="col-md-12 col-sm-12">
+       <div class="panel rounded shadow">
+         <div class="panel-body text-center bg-teal rounded">
+           <div class="text-muted">
+             <i class="fa fa-4x fa-university"></i>
+           </div>
+           <h2 class="text-strong">Paiement par virement </h2>
+           <p> Code Banque : 13907  </p>
+           <p> Code Guichet : 00000
+           <p> Numéro de compte : 8195254328
+           <p> Clé RIB : 26
+           <p> IBAN : FR76 1390 7000 0081 9525 4321 826</p>
+           <p> BIC : CCBPFRPPLYO
+         </div><!-- /.panel-body -->
+       </div><!-- /.panel -->
+     </div>
+  </div>
+
       <% else %>
+      <div class="row">
         <div class="col-md-12 col-sm-12">
           <div class="panel rounded shadow">
             <div class="panel-body text-center bg-teal rounded">
