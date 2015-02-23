@@ -84,6 +84,11 @@ class ContactController < ApplicationController
     end
   end
 
+  def delete_template
+    current_user.templates.where(id: params[:template_id]).first.delete
+    render json: true
+  end
+
   def new_sms
   end
 

@@ -77,5 +77,23 @@ $(document).ready ->
         $("#preview_number_send").text(response)
         return
 
+  $("#delete-template").click ->
+    $('.modal#confirm_delete').modal()
+    $('#subject_template_delete').text( $("#select-template option:selected").text() )
+
+  $("#valid-delete-template").click ->
+    $.ajax
+      url: "/contact/delete_template"
+      type: "POST"
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')
+        return
+      data:
+        template_id: $("#select-template").val();
+      success: (response) ->
+        $('.modal#confirm_delete').modal("hide")
+        $("#preview_number_send").text(response)
+        return
+
   $("#load-template").click ->
     window.location.href = "/contact/new_email?template=" + $("#select-template").val();
