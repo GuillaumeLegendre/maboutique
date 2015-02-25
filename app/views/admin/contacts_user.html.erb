@@ -1,0 +1,25 @@
+<p>
+  <a href="/admin" class="btn btn-default">Retour</a>
+</p>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>nom</th>
+      <th>prénom</th>
+      <th>nom pro</th>
+      <th>numéro de tel</th>
+      <th>nombre de contact</th>
+    </tr>
+  </thead>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.email %></td>
+      <td><%= u.last_name %></td>
+      <td><%= u.first_name %></td>
+      <td><%= u.name_pro %></td>
+      <td><%= u.phone %></td>
+      <td><%= u.contacts.length %></td>
+    </tr>
+  <% end %>
+</table>

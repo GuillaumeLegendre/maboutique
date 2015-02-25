@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'contact/show_unsuscribe_email'
   post 'contact/unsuscribe_email'
   get 'contact/preview_number_send_sms'
+  get 'admin/contacts_user'
   get 'dashboard' => "dashboard#show"
 
   resources :payement do
