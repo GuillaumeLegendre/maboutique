@@ -1,0 +1,22 @@
+Vous souhaitez vous désinscrire de la liste de diffusion de <%= @user.name_pro %>
+
+<%= form_tag("/contact/unsuscribe_email", {class: "form-horizontal form-bordered"}) do |f| %>
+  <div class="form-body">
+    <div class="form-group hide">
+        <div class="col-sm-7">
+          <input type="text" value="<%= @user.id %>" name="contact[user_id]">
+        </div>
+      </div><!-- /.form-group -->
+      <div class="form-group">
+          <label class="col-sm-3 control-label">Email<span class="asterisk">*</span></label>
+          <div class="col-sm-7">
+              <input type="text" class="form-control input-sm" name="contact[email]" placeholder="email@contact.com" required>
+          </div>
+      </div><!-- /.form-group -->
+  </div><!-- /.form-body -->
+  <div class="form-footer">
+      <div class="col-sm-offset-3">
+          <button type="submit" class="btn btn-primary">Se désinscrire</button>
+      </div>
+  </div><!-- /.form-footer -->
+<% end %>

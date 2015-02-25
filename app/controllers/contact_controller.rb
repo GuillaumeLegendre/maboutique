@@ -1,6 +1,6 @@
 class ContactController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :valid_subscription?, :except => :create
+  before_filter :authenticate_user!, :except => [:show_unsuscribe_email, :unsuscribe_email]
+  before_filter :valid_subscription?, :except => [:create, :show_unsuscribe_email, :unsuscribe_email]
   layout "backoffice"
 
   def create
@@ -35,7 +35,8 @@ class ContactController < ApplicationController
   end
 
   def send_email
-    @contacts = Contact.where(user_id: current_user)
+    params[:email][:body] += "<div>Pour vous désinscrire de cette liste de diffusion <a href='#{contact_show_unsuscribe_email_path}?user_id=#{current_user.id}'>cliquer ici</a></div>"
+    @contacts = Contact.where(user_id: 1, unsuscribe_email: false)
     @contacts = @contacts.where(gender: Contact.genders[params[:email][:gender]]) if params[:email][:gender].present?
     @contacts = @contacts.where(vip: params[:email][:vip]) if params[:email][:vip].present?
     @contacts.each do |c|
@@ -134,6 +135,22 @@ class ContactController < ApplicationController
   def preview_number_send_sms
     @contacts = contacts_send_sms params[:gender], params[:vip]
     render json: @contacts.length
+  end
+
+  def show_unsuscribe_email
+    @user = User.find params[:user_id]
+    render :layout => "application"
+  end
+
+  def unsuscribe_email
+    u = User.find params[:contact][:user_id]
+    c = u.contacts.find_by_email params[:contact][:email]
+    if c
+      c.update_attributes(unsuscribe_email: true)
+      redirect_to :back, {notice: "Vous avez été désinscrit de la liste de diffusion."}
+    else
+      redirect_to :back, {notice: "L'email fournit n'a pas été trouvé."}
+    end
   end
 
   private

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   post 'contact/edit_template'
   post 'contact/delete_template'
   post 'contact/upload_img'
+  get 'contact/show_unsuscribe_email'
+  post 'contact/unsuscribe_email'
   get 'contact/preview_number_send_sms'
   get 'dashboard' => "dashboard#show"
 
