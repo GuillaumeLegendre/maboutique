@@ -97,3 +97,8 @@ $(document).ready ->
 
   $("#load-template").click ->
     window.location.href = "/contact/new_email?template=" + $("#select-template").val();
+
+  $('.default_template_link').click ->
+    r = confirm("Vos modification seront perdue si vous chargez un template. Voulez-vous continuer?");
+    if (r == false)
+        return false;

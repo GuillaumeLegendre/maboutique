@@ -31,6 +31,10 @@ class ContactController < ApplicationController
   def new_email
     if params[:template] =~ /^[0-9]+$/
       @template = current_user.templates.where(id: params[:template]).first
+    elsif params[:default_template] =~ /^[0-9]+$/
+      @template = DefaultTemplate.find params[:default_template]
+    else
+      @template = DefaultTemplate.first
     end
   end
 

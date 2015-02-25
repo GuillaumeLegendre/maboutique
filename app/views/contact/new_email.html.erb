@@ -18,6 +18,22 @@
               <div class="clearfix"></div>
             </div><!-- /.panel-heading -->
             <div class="panel-body">
+              <div class="default_template row">
+                <% DefaultTemplate.all.each do |dt| %>
+                  <div class="panel panel-default col-sm-2">
+                    <div class="panel-body">
+                      <a class="default_template_link" href="/contact/new_email?default_template=<%= dt.id %>">
+                        <img src="<%= dt.img %>" width="150px"/>
+                      </a>
+                    </div>
+                    <div class="panel-footer">
+                      <a class="default_template_link" href="/contact/new_email?default_template=<%= dt.id %>">
+                        <%= dt.name %>
+                      </a>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
               <div class="template" style="margin-bottom:20px;">
                 <% unless current_user.templates.empty? %>
                   <select id="select-template">
