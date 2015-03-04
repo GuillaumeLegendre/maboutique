@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150225212358) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "gender",           default: 0
-    t.boolean  "unsuscribe_email"
+    t.boolean  "unsuscribe_email", default: false
   end
 
   create_table "default_templates", force: true do |t|
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20150225212358) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "end_subscription",         default: '1999-12-31'
+    t.date     "end_subscription",         default: '2013-12-31'
     t.string   "paypal_recurring_account"
     t.string   "paypal_recurring_uid"
     t.string   "paypal_recurring_token"

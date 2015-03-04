@@ -23,7 +23,7 @@
                   <div class="panel panel-default col-sm-2">
                     <div class="panel-body">
                       <a class="default_template_link" href="/contact/new_email?default_template=<%= dt.id %>">
-                        <img src="<%= dt.img %>" width="150px"/>
+                        <img src="<%= dt.img %>" width="130px"/>
                       </a>
                     </div>
                     <div class="panel-footer">
@@ -41,9 +41,9 @@
                       <option value="<%= t.id %>"><%= t.subject %></option>
                     <% end %>
                   </select>
-                  <button type="button" id="load-template" class="btn btn-success btn-sm">Charger le modèle</button>
-                  <button type="button" id="edit-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Éditer le modèle actuel</button>
-                  <button type="button" id="delete-template" class="btn btn-success btn-sm"><i class="fa fa-trash-o"></i> Supprimer le modèle actuel</button>
+                  <button type="button" id="load-template" class="btn btn-primary btn-sm">Charger le modèle</button>
+                  <button type="button" id="edit-template" class="btn btn-warning btn-sm"><i class="fa fa-save"></i> Éditer le modèle actuel</button>
+                  <button type="button" id="delete-template" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Supprimer le modèle actuel</button>
                 <% end %>
                 <button type="button" id="save-template" class="btn btn-success btn-sm"><i class="fa fa-save"></i> Sauvegarder l'email en tant que modèle</button>
               </div>

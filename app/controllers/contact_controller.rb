@@ -67,11 +67,14 @@ class ContactController < ApplicationController
   end
 
   def save_template
+    if current_user.templates.find_by_subject( params[:template][:subject] )
+      return render json: {errors: ["Vous ne pouvez pas avoir deux modèles avec le même sujet."]}
+    end
     params[:template][:user_id] = current_user.id
 
     @t = Template.create(template_params)
     if @t.valid?
-      render json: true
+      render json: @t
     else
       render json: @t.errors
     end
