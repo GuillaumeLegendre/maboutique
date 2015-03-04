@@ -1,3 +1,9 @@
-.default_template .panel-body{
-  height: 110px;
+.default_template
+  .panel{
+    background-color: #FBFBFB;
+    .panel-body{
+      height: 110px;
+      background-color: white;
+    }
+  }
 }
