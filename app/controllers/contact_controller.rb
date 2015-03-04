@@ -39,7 +39,7 @@ class ContactController < ApplicationController
   end
 
   def send_email
-    params[:email][:body] += "<div>Pour vous désinscrire de cette liste de diffusion <a href='#{contact_show_unsuscribe_email_path}?user_id=#{current_user.id}'>cliquer ici</a></div>"
+    params[:email][:body] += "<div>Pour vous désinscrire de cette liste de diffusion <a href='#{contact_show_unsuscribe_email_url}?user_id=#{current_user.id}'>cliquer ici</a></div>"
     @contacts = Contact.where(user_id: current_user, unsuscribe_email: nil)
     @contacts = @contacts.where(gender: Contact.genders[params[:email][:gender]]) if params[:email][:gender].present?
     @contacts = @contacts.where(vip: params[:email][:vip]) if params[:email][:vip].present?
