@@ -22,6 +22,14 @@ $(document).ready ->
         return
     return
 
+  $(".checkbox_activate_user").click ->
+    $.ajax
+      url: "/contact/toggle_user_subscription"
+      type: "GET"
+      data:
+        id: $(this).attr("data-id"),
+      contentType: "application/json; charset=utf-8"
+
   $("select").change ->
     $.ajax
       url: "/contact/preview_number_send_sms"

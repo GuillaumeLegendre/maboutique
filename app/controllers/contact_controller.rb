@@ -3,6 +3,19 @@ class ContactController < ApplicationController
   before_filter :valid_subscription?, :except => [:create, :show_unsuscribe_email, :unsuscribe_email]
   layout "backoffice"
 
+  def index
+    @contacts = current_user.contacts
+  end
+
+  def toggle_user_subscription
+    c = current_user.contacts.find(params[:id])
+    if c
+      c.activate = c.activate ? false : true
+      c.save
+    end
+    render json: true
+  end
+
   def create
     params[:contact][:user_id] = current_user.id
     params[:contact][:phone] = "+33#{params[:contact][:phone][1..-1]}" if params[:contact][:phone][0] == '0'
@@ -40,7 +53,7 @@ class ContactController < ApplicationController
 
   def send_email
     params[:email][:body] += "<div>Pour vous désinscrire de cette liste de diffusion <a href='#{contact_show_unsuscribe_email_url}?user_id=#{current_user.id}'>cliquer ici</a></div>"
-    @contacts = Contact.where(user_id: current_user, unsuscribe_email: nil)
+    @contacts = Contact.where(user_id: current_user, unsuscribe_email: nil, activate: true)
     @contacts = @contacts.where(gender: Contact.genders[params[:email][:gender]]) if params[:email][:gender].present?
     @contacts = @contacts.where(vip: params[:email][:vip]) if params[:email][:vip].present?
     @contacts.each do |c|
@@ -102,7 +115,7 @@ class ContactController < ApplicationController
 
   def send_sms
     sms_body = params[:sms][:body]
-    @contacts = contacts_send_sms params[:sms][:gender], params[:sms][:vip]
+    @contacts = contacts_send_sms(params[:sms][:gender], params[:sms][:vip])
     credits_by_sms = 1 # actually limit by type sms # sms_body.length/160+1
     if credits_by_sms * @contacts.length > current_user.credits
       return redirect_to :back, {alert: "Vous n'avez pas assez de crédits."}
@@ -176,7 +189,7 @@ class ContactController < ApplicationController
   end
 
   def contacts_send_sms gender = nil, vip = nil
-    @contacts = Contact.where(user_id: current_user).where.not('phone' => '')
+    @contacts = Contact.where(user_id: current_user, activate: true).where.not('phone' => '')
     @contacts = @contacts.where(gender: Contact.genders[gender]) if gender.present?
     @contacts = @contacts.where(vip: vip) if vip.present?
     return @contacts

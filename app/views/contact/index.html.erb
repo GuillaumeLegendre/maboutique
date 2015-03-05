@@ -1,0 +1,51 @@
+<!-- START @PAGE CONTENT -->
+<section id="page-content">
+
+  <!-- Start body content -->
+  <div class="body-content animated fadeIn">
+
+    <!-- Start mail page -->
+    <div class="row compose-mail-wrapper">
+
+      <div class="col-sm-12">
+        <div class="body-content animated fadeIn">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- Start table horizontal scroll -->
+              <h4 class="mt-0">Vos contacts</h4>
+              <div class="table-responsive mb-20">
+                <table class="table table-striped table-hover table-condensed">
+                  <tr>
+                    <th>email</th>
+                    <th>nom</th>
+                    <th>prénom</th>
+                    <th>activé</th>
+                  </tr>
+                  <% @contacts.each do |c| %>
+                    <tr>
+                      <td><%= c.email %></td>
+                      <td><%= c.last_name %></td>
+                      <td><%= c.first_name %></td>
+                      <td>
+                        <div class="ckbox ckbox-theme circle">
+                          <input id="checkbox-type-circle1" class="checkbox_activate_user" data-id="<%= c.id %>" type="checkbox" <%= c.activate ? 'checked="checked"' : '' %> >
+                          <label for="checkbox-type-circle1"></label>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </table>
+              </div><!-- /.table-responsive -->
+              <!--/ End table horizontal scroll -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.row -->
+    <!--/ End mail page -->
+
+  </div>
+  <!-- End body content -->
+
+</section><!-- /#page-content -->
+<!--/ END PAGE CONTENT -->

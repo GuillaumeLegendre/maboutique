@@ -10,7 +10,7 @@ class Contact < ActiveRecord::Base
   def self.send_birthday_mail
     contacts = Contact.birthday_today
     contacts.each do |c|
-      if c.user.birthday_mail && c.user.check_subscription?
+      if c.user.birthday_mail && c.user.check_subscription? && c.activate && !c.unsuscribe_email
         t = c.user.templates.where(birthday: true).first
         email = {subject: t.subject, body: t.body}
         ContactMailer.send_to_contact(c, email, c.user).deliver

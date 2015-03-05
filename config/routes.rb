@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'home/contact'
   get 'home/faq'
   get 'home/siteweb'
+  get 'contact/index'
+  get 'contact/toggle_user_subscription'
   get 'contact/new_email'
   post 'contact/send_email'
   get 'contact/new_birthday_email'
