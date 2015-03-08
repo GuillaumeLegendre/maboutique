@@ -50,3 +50,12 @@ unless DefaultTemplate.find_by_name("boutiques diverses")
     img: "/global/img/default_template/cave_a_vin.jpg"
   )
 end
+
+unless DefaultTemplate.find_by_name("restaurant anniversaire")
+  DefaultTemplate.create(
+    name: "restaurant anniversaire",
+    subject: "restaurant anniversaire",
+    body: "<table border=\"0\" width=\"700\"><tbody><tr><td width=\"400\"><p><img src=\"http://maboutique.pro/uploads/image/picture/22/LAPIZZ.jpg\" style=\"width: 228.84375px; height: 122px;\" class=\"img-rounded\"></p></td><td style=\"text-align: center; \"><h1><span style=\"color: rgb(156, 0, 0);\">jOYEUX ANNIVERSAIRE !</span></h1></td></tr><tr><td><h3><hr><div style=\"text-align: center;\"><span style=\"line-height: 1.42857143; color: inherit; font-family: inherit;\">Cher(e) client(e),</span></div><span style=\"line-height: 1.42857143;\"><div style=\"text-align: center;\">Pour fêter votre anniversaire</div><div style=\"text-align: center;\">L'équipe de \"La Pizz\" vous offre:</div><h2 style=\"text-align: center;\">UNE PIZZA de votre choix</h2></span></h3><hr></td><td><p><img src=\"http://maboutique.pro/uploads/image/picture/38/birthday_cake.jpeg\" alt=\"Résultat de recherche d'images pour &quot;joyeux anniversaire&quot;\"><br></p></td></tr><tr><td colspan=\"2\" style=\"text-align: center; \"><h2><span style=\"color: rgb(57, 123, 33);\"><span style=\"text-decoration: underline; font-weight: bold; font-style: italic;\">Pensez à présenter ce bon&nbsp;</span>:</span> 06 00 01 02 03</h2><h2><br></h2><h5><span style=\"color: rgb(0, 0, 0);\">12, rue des diables bleus.38230 Charvieu</span></h5></td></tr></tbody></table>",
+    img: "/global/img/default_template/cave_a_vin.jpg"
+  )
+end
