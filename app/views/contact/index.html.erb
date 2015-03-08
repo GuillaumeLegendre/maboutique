@@ -28,8 +28,8 @@
                       <td><%= c.first_name %></td>
                       <td>
                         <div class="ckbox ckbox-theme circle">
-                          <input id="checkbox-type-circle1" class="checkbox_activate_user" data-id="<%= c.id %>" type="checkbox" <%= c.activate ? 'checked="checked"' : '' %> >
-                          <label for="checkbox-type-circle1"></label>
+                          <input id="checkbox-type-circle<%= c.id %>" class="checkbox_activate_user" data-id="<%= c.id %>" type="checkbox" <%= c.activate ? 'checked="checked"' : '' %> >
+                          <label for="checkbox-type-circle<%= c.id %>"></label>
                         </div>
                       </td>
                     </tr>

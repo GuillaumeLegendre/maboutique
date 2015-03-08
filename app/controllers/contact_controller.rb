@@ -4,7 +4,7 @@ class ContactController < ApplicationController
   layout "backoffice"
 
   def index
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.order(:id)
   end
 
   def toggle_user_subscription
