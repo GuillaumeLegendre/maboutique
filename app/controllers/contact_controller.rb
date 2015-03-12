@@ -4,7 +4,7 @@ class ContactController < ApplicationController
   layout "backoffice"
 
   def index
-    @contacts = current_user.contacts
+    @contacts = current_user.contacts.order(:id)
   end
 
   def toggle_user_subscription
@@ -42,6 +42,7 @@ class ContactController < ApplicationController
   end
 
   def new_email
+    @default_templates = DefaultTemplate.where.not(name: "restaurant anniversaire")
     if params[:template] =~ /^[0-9]+$/
       @template = current_user.templates.where(id: params[:template]).first
     elsif params[:default_template] =~ /^[0-9]+$/
@@ -64,8 +65,9 @@ class ContactController < ApplicationController
 
   def new_birthday_email
     @template = Template.where(user_id: current_user, birthday: true).first
-    if @template.nil?
-      @template = Template.create(user: current_user, birthday: true)
+    if @template.nil? || @template.body.empty? || @template.body == "<br>"
+      dt = DefaultTemplate.find_by_name("restaurant anniversaire")
+      @template = Template.create(user: current_user, birthday: true, subject: dt.subject, body: dt.body)
     end
   end
 
