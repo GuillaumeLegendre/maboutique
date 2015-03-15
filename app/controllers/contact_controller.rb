@@ -60,7 +60,7 @@ class ContactController < ApplicationController
     @contacts.each do |c|
       ContactMailer.send_to_contact(c, params[:email], current_user).deliver
     end
-    redirect_to :back, {notice: "Votre email va être envoyé."}
+    redirect_to :back, {notice: "Votre email est envoyé."}
   end
 
   def new_birthday_email
