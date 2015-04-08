@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305151717) do
+ActiveRecord::Schema.define(version: 20150408150841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150305151717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "gender",           default: 0
-    t.boolean  "unsuscribe_email"
+    t.boolean  "unsuscribe_email", default: false
     t.boolean  "activate",         default: true
   end
 
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20150305151717) do
     t.string   "address"
     t.integer  "zip_code"
     t.string   "town"
-    t.integer  "credits",                  default: 100,          null: false
+    t.integer  "credits",                  default: 0,            null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20150305151717) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "end_subscription",         default: '2000-01-01'
+    t.date     "end_subscription",         default: '2015-12-31'
     t.string   "paypal_recurring_account"
     t.string   "paypal_recurring_uid"
     t.string   "paypal_recurring_token"
