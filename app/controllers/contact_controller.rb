@@ -124,7 +124,7 @@ class ContactController < ApplicationController
     end
     resp = RestClient.post 'http://www.octopush-dm.com/api/sms', {
       user_login: 'quicksite.contact@gmail.com',
-      api_key: 'faQ8nzpwbndTeYpImkjE52gi4jBKq58I',
+      api_key: 'ijiNP1KUlErROruHuahA2hLpKpSl1FzY',
       sms_recipients: @contacts.collect { |x| x.phone}.join(","),
       sms_text: params[:sms][:body],
       sms_type: 'XXX',
