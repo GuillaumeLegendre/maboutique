@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20150408150841) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "gender",           default: 0
-    t.boolean  "unsuscribe_email", default: false
+    t.boolean  "unsuscribe_email"
     t.boolean  "activate",         default: true
   end
 
