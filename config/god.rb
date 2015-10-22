@@ -1,12 +1,12 @@
 RAILS_ROOT = File.dirname(File.dirname(__FILE__))
 
 God.watch do |w|
-  pid_file = File.join(RAILS_ROOT, "tmp/pids/unicorn.pid")
+  pid_file = File.join(RAILS_ROOT, "tmp/pids/puma.pid")
 
   w.name = "puma"
   w.dir = RAILS_ROOT
-  w.interval = 10.seconds
-  w.start = "unicorn_rails -p 80 -D"
+  w.interval = 60.seconds
+  w.start = "puma -C #{RAILS_ROOT}/config/puma.rb -d"
   w.stop = "kill -s QUIT $(cat #{pid_file})"
   w.restart = "kill -s HUP $(cat #{pid_file})"
   w.start_grace = 20.seconds
@@ -16,7 +16,7 @@ God.watch do |w|
   # w.uid = 'nico'
   # w.gid = 'team'
 
-  w.env = { 'RAILS_ENV' => "production" }
+  w.env = { 'RAILS_ENV' => "development" }
 
   w.behavior(:clean_pid_file)
 
